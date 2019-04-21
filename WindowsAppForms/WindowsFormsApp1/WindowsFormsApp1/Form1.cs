@@ -65,14 +65,20 @@ namespace WindowsFormsApp1
                     for (int i=0; i < dr.FieldCount; i++)
                     {
                         Console.Write("{0}\t", dr.GetValue(i));
+                        textBox1.Text += dr.GetValue(i).ToString();                      
                     }
                     //Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t{5}", dr.GetV)
-                    Console.WriteLine();
+                        
                 }
                 conn.Close();
                 conn.Dispose();
                 Console.WriteLine("Finall");
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
