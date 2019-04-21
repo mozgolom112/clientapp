@@ -68,7 +68,7 @@ namespace WindowsFormsApp1
                         textBox1.Text += dr.GetValue(i).ToString();                      
                     }
                     //Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t{5}", dr.GetV)
-                        
+                    Console.WriteLine();   
                 }
                 conn.Close();
                 conn.Dispose();
@@ -79,6 +79,78 @@ namespace WindowsFormsApp1
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = DBUtils.GetDBConnection();
+            try
+            {
+                conn.Open();
+            }
+            catch(Exception exp)
+            {
+
+            }
+            SqlCommand cmdInsert = new SqlCommand("Insert into crew (ID,Surname,Firstname,Secondname,Status,yearofbirthday)"+
+                "Values (@ID,@Surname,@Firstname,@Secondname,@Status,@yearofbirthday)", conn);
+            SqlParameter param = new SqlParameter();
+            //параметр ID
+            param.ParameterName = "@ID";
+            param.Value = 9009;
+            param.SqlDbType = SqlDbType.Int;
+            cmdInsert.Parameters.Add(param);
+
+            //параметр 
+
+            param = new SqlParameter();
+            param.ParameterName = "@Surname";
+            param.Value = "Gilontev";
+            param.SqlDbType = SqlDbType.VarChar;
+            cmdInsert.Parameters.Add(param);
+
+            //параметр 
+            param = new SqlParameter();
+            param.ParameterName = "@Firstname";
+            param.Value = "Vasiliy";
+            param.SqlDbType = SqlDbType.VarChar;
+            cmdInsert.Parameters.Add(param);
+
+            //параметр 
+            param = new SqlParameter();
+            param.ParameterName = "@Secondname";
+            param.Value = "Sergeevich";
+            param.SqlDbType = SqlDbType.VarChar;
+            cmdInsert.Parameters.Add(param);
+
+            //параметр status
+            param = new SqlParameter();
+            param.ParameterName = "@Status";
+            param.Value = 1;
+            param.SqlDbType = SqlDbType.Int;
+            cmdInsert.Parameters.Add(param);
+
+            //параметр year
+            param = new SqlParameter();
+            param.ParameterName = "@yearofbirthday";
+            param.Value = 1989;
+            param.SqlDbType = SqlDbType.Int;
+            cmdInsert.Parameters.Add(param);
+
+            Console.WriteLine("Try to insert");
+            try
+            {
+                cmdInsert.ExecuteNonQuery();
+            }
+            catch(Exception exp)
+            {
+                Console.WriteLine(exp.ToString());
+                conn.Close();
+                conn.Dispose();
+            }
+            conn.Close();
+            conn.Dispose();
+            Console.WriteLine();
         }
     }
 }
