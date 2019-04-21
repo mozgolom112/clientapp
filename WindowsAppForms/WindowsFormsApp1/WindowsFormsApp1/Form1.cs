@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,43 @@ namespace WindowsFormsApp1
         private void addition_techDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            SqlConnection conn = DBUtils.GetDBConnection();
+            try
+            {
+                conn.Open();
+               // Console.WriteLine("Connection successfull!");
+            }
+            catch (Exception excpt)
+            {
+
+            }
+
+            SqlCommand cmdSelectAll = new SqlCommand("SELECT * FROM crew", conn);
+
+            using (SqlDataReader dr = cmdSelectAll.ExecuteReader(CommandBehavior.CloseConnection))
+            {
+                for (int i=0; i< dr.FieldCount; i++)
+                {
+                    Console.Write("{0}\t", dr.GetName(i).ToString().Trim());
+                }
+                while (dr.Read())
+                {
+
+                    for (int i=0; i < dr.FieldCount; i++)
+                    {
+                        Console.Write("{0}\t", dr.GetValue(i));
+                    }
+                    //Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t{5}", dr.GetV)
+                    Console.WriteLine();
+                }
+                conn.Close();
+                conn.Dispose();
+                Console.WriteLine("Finall");
+            }
         }
     }
 }
