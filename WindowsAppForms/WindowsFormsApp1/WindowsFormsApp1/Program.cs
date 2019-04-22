@@ -28,6 +28,7 @@ namespace WindowsFormsApp1
             }
             /*
              * //Нужны права для пользоватля, чтобы вызывать имена БД
+             * //Так что пока так добавлю и все
             SqlCommand cmdDbname = new SqlCommand("MilitaryCompany.sys.sp_databases", conn);
             cmdDbname.CommandType = System.Data.CommandType.StoredProcedure;
             using (SqlDataReader namedb = cmdDbname.ExecuteReader())
