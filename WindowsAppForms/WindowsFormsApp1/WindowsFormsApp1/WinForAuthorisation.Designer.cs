@@ -222,6 +222,7 @@
             this.DBName.Name = "DBName";
             this.DBName.Size = new System.Drawing.Size(223, 24);
             this.DBName.TabIndex = 18;
+            this.DBName.Items.Add("MilitaryCompany");
             // 
             // User
             // 

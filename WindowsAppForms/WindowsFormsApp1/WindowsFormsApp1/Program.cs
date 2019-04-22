@@ -26,7 +26,22 @@ namespace WindowsFormsApp1
             {
 
             }
+            /*
+             * //Нужны права для пользоватля, чтобы вызывать имена БД
+            SqlCommand cmdDbname = new SqlCommand("MilitaryCompany.sys.sp_databases", conn);
+            cmdDbname.CommandType = System.Data.CommandType.StoredProcedure;
+            using (SqlDataReader namedb = cmdDbname.ExecuteReader())
+            {
 
+                if (namedb.HasRows)
+                {
+                    while (namedb.Read())
+                    {
+                        Console.WriteLine(namedb.GetValue(0).ToString());
+                    }
+                }
+            }
+            */
             // Вывод информации о подключении
             Console.WriteLine("Свойства подключения:");
             Console.WriteLine("\tСтрока подключения: {0}", conn.ConnectionString);
