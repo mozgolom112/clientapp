@@ -195,15 +195,16 @@ namespace WindowsFormsApp1
             using (SqlConnection connection = DBUtils.GetDBConnection())
             {
                 connection.Open();
-                /* нужно переделать
+             
+               
                 SqlCommand cmdCheck = new SqlCommand(check, connection);
                 Console.WriteLine(cmdCheck.ExecuteNonQuery().ToString());
-                if (cmdCheck.ExecuteNonQuery().ToString() == "") { //возвращает -1 если пустые строки
+                if (!cmdCheck.ExecuteReader().HasRows) { 
                     Console.WriteLine("Такого бойца нет в таблице crew");
                     return;
                 }
                 else
-                {*/
+                {
                     string update = string.Format("Update crew SET Status = 4 WHERE ID = {0}", persID);
                     SqlCommand cmdUpdate = new SqlCommand(update, connection);
                     int number = cmdUpdate.ExecuteNonQuery();
@@ -216,7 +217,7 @@ namespace WindowsFormsApp1
                     {
                         button1.PerformClick();
                     }
-//}
+                }
                 connection.Close();
                 connection.Dispose();
 
