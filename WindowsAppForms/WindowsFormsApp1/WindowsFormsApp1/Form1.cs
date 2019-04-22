@@ -89,7 +89,7 @@ namespace WindowsFormsApp1
             }
             catch(Exception exp)
             {
-
+                
             }
             SqlCommand cmdInsert = new SqlCommand("Insert into crew (ID,Surname,Firstname,Secondname,Status,yearofbirthday)"+
                 "Values (@ID,@Surname,@Firstname,@Secondname,@Status,@yearofbirthday)", conn);
@@ -143,13 +143,85 @@ namespace WindowsFormsApp1
             }
             catch(Exception exp)
             {
-                Console.WriteLine(exp.ToString());
-                conn.Close();
-                conn.Dispose();
+                Console.WriteLine(exp.Message);
             }
+            
             conn.Close();
             conn.Dispose();
             Console.WriteLine();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //parametrs
+            int nwID = 9011;
+            string Firstname = "Ivanichex";
+            string Secondname = "Oliver";
+            string Surname = "Kilonter";
+            int status = 1;
+            int year = 1977;
+            //sql запрос 
+            string sqlExpresion = String.Format("Insert into crew Values ({0}, '{1}', '{2}', '{3}', {4}, {5})", nwID, Surname, Firstname, Secondname, status, year);
+
+            using (SqlConnection connection = DBUtils.GetDBConnection())
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(sqlExpresion, connection);
+                try { 
+                int number = command.ExecuteNonQuery();
+                Console.WriteLine("Добавлено объектов: {0}", number);
+                }
+                catch (Exception excpt)
+                {
+                    Console.WriteLine(excpt.Message);
+                    Console.WriteLine("Произошла ошибка. Неверный запрос");
+
+                }
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (textBox2.Text.Length == 0)
+            {
+                Console.WriteLine("Введите номер бойца!");
+                return;
+
+            }
+            int persID = Int32.Parse(textBox2.Text);
+            string check = string.Format("Select ID from crew where ID = {0}", persID);
+
+            using (SqlConnection connection = DBUtils.GetDBConnection())
+            {
+                connection.Open();
+                /* нужно переделать
+                SqlCommand cmdCheck = new SqlCommand(check, connection);
+                Console.WriteLine(cmdCheck.ExecuteNonQuery().ToString());
+                if (cmdCheck.ExecuteNonQuery().ToString() == "") { //возвращает -1 если пустые строки
+                    Console.WriteLine("Такого бойца нет в таблице crew");
+                    return;
+                }
+                else
+                {*/
+                    string update = string.Format("Update crew SET Status = 4 WHERE ID = {0}", persID);
+                    SqlCommand cmdUpdate = new SqlCommand(update, connection);
+                    int number = cmdUpdate.ExecuteNonQuery();
+                    Console.WriteLine("Обновлено объектов: {0}", number);
+                    Console.WriteLine("Хотите вызвать(обновить) обновленную таблицу?");
+                    Console.WriteLine("Введите y/n: ");
+                    button1.PerformClick();
+
+                    if (Console.Read() == 'y')
+                    {
+                        button1.PerformClick();
+                    }
+//}
+                connection.Close();
+                connection.Dispose();
+
+
+            }
         }
     }
 }

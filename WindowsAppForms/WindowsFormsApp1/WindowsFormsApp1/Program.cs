@@ -35,6 +35,7 @@ namespace WindowsFormsApp1
             Console.WriteLine("\tВерсия сервера: {0}", conn.ServerVersion);
             Console.WriteLine("\tСостояние: {0}", conn.State);
             Console.WriteLine("\tWorkstationld: {0}", conn.WorkstationId);
+            Console.WriteLine("\tКлиент: {0}", conn.ClientConnectionId);
 
 
 
