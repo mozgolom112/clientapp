@@ -48,7 +48,6 @@ namespace WindowsFormsApp1
             }
             catch (Exception excpt)
             {
-
             }
 
             SqlCommand cmdSelectAll = new SqlCommand("SELECT * FROM crew", conn);
