@@ -37,12 +37,14 @@ namespace WindowsFormsApp1
             Console.WriteLine("\tWorkstationld: {0}", conn.WorkstationId);
             Console.WriteLine("\tКлиент: {0}", conn.ClientConnectionId);
 
-
-
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new WinForAuthorisation());
+            /*
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-
+            */
         }
     }
 }
