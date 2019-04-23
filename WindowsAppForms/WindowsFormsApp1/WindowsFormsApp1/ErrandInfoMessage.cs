@@ -18,18 +18,19 @@ namespace WindowsFormsApp1
             string caption ="";
             if (connIsOpen)
             {
-                message = "Соединение установлено. Свойства подключения:\n"
-                        + "\nСтрока подключения: " + conn.ConnectionString
-                        + "\nБаза данных: " + conn.Database
-                        + "\nСервер: " + conn.DataSource
-                        + "\nВерсия сервера: " + conn.ServerVersion
-                        + "\nСостояние: " + conn.State ;
+                message = "\t\tСоединение установлено. \nСвойства подключения:"
+                        + "\n\tБаза данных: " + conn.Database
+                        + "\n\tСервер: " + conn.DataSource
+                        + "\n\tВерсия сервера: " + conn.ServerVersion
+                        + "\n\tСостояние: " + conn.State ;
                 if (loginIsMade)
                 {
-                    message += "\nWorkstationld: " + conn.WorkstationId
-                                +"\nКлиент: " + conn.ClientConnectionId;
+                    message += "\nДанные пользователя:"
+                                +"\n\tСтрока подключения: " + conn.ConnectionString
+                                + "\n\tWorkstationld: " + conn.WorkstationId
+                                + "\n\tКлиент: " + conn.ClientConnectionId;
                 }
-                caption = "Информация о подкючении";
+                caption = "Информация о подключении";
             }
             else
             {

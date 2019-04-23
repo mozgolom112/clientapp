@@ -86,7 +86,7 @@ namespace WindowsFormsApp1
                 try
                 {
                     testconn.Open();
-                    labelStatusOfConnection.Text = "Сервер готов к подклчючению";
+                    labelStatusOfConnection.Text = "Сервер готов к подключению";
                     connIsReady = true;
                 }
                 catch (Exception ex)
@@ -95,7 +95,7 @@ namespace WindowsFormsApp1
                     connIsReady = false;
                     //ErrMessage = ex.Message;
                 }
-                connection = testconn;
+                connectiontest = testconn;
             }
         }
 
@@ -112,7 +112,46 @@ namespace WindowsFormsApp1
 
         private void ButtonForConn_Click(object sender, EventArgs e)
         {
+            if (NameOfServer.SelectedIndex < 0)
+            {
+                MessageBox.Show("\tВыберите сервер", "Ошибка", MessageBoxButtons.OK);
+                return;
+            }
+            if (DBName.SelectedIndex < 0)
+            {
+                MessageBox.Show("\tВыберите базу данных, с которой хотите работать", "Ошибка", MessageBoxButtons.OK);
+                return;
+            }
+            if (UserName.Text == "")
+            {
+                MessageBox.Show("\tВведите логин", "Ошибка", MessageBoxButtons.OK);
+                return;
+            }
+            if (Password.Text == "")
+            {
+                MessageBox.Show("\tВведите пароль", "Ошибка", MessageBoxButtons.OK);
+                return;
+            }
+            connectiontest.Close();
+            connectionforuser = DBSQLServerUtils.GetDBConnection(@NameOfServer.SelectedItem.ToString(), 
+                DBName.SelectedItem.ToString(), 
+                UserName.Text, 
+                Password.Text);
+            try
+            {
+                connectionforuser.Open();
+                loginIsMade = true;
+                connIsReady = true;
+                
+                Statusofauth.Text = "Успешно";
 
+            }
+            catch (Exception err)
+            {
+                loginIsMade = false;
+                connIsReady = false;
+                Statusofauth.Text = "Не успешно";
+            }
         }
 
         private void DBName_SelectedIndexChanged(object sender, EventArgs e)
@@ -123,7 +162,7 @@ namespace WindowsFormsApp1
                     try
                     {
                     testconn.Open();
-                    labelStatusOfConnection.Text = "Сервер готов к подклчючению";
+                    labelStatusOfConnection.Text = "Сервер готов к подключению";
                     connIsReady = true;
                     }
                     catch (Exception ex)
@@ -133,11 +172,13 @@ namespace WindowsFormsApp1
                     //ErrMessage = ex.Message;
 
                 }
-                connection = testconn;
+                connectiontest = testconn;
                 }
         }
 
-        SqlConnection connection;
+        SqlConnection connectiontest;
+
+        SqlConnection connectionforuser;
         string ErrMessage = "Выберите сервер и базу данных";
         bool connIsReady = false;
         bool loginIsMade = false;
@@ -148,9 +189,26 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            ErrandInfoMessage.MakeMessage(connection, connIsReady, loginIsMade);
+            try { connectiontest.Close(); } catch (Exception exc) {}
+            try { connectionforuser.Close(); } catch (Exception exc) {}
+            try { connectiontest.Open(); connIsReady = true; } catch (Exception exc) { connIsReady = false; }
+                ErrandInfoMessage.MakeMessage(connectiontest, connIsReady, false);
+            try { connectionforuser.Open(); connIsReady = true; } catch (Exception exc) { connIsReady = false; }
         }
-        
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+           // ErrandInfoMessage.MakeMessage(connection, connIsReady, loginIsMade);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ErrandInfoMessage.MakeMessage(connectionforuser, connIsReady, loginIsMade);
+        }
     }
 }

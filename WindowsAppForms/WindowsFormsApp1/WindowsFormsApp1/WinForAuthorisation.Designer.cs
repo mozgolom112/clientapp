@@ -35,18 +35,18 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.UserName = new System.Windows.Forms.TextBox();
+            this.bottonStatusConn = new System.Windows.Forms.Button();
             this.ShowPassword = new System.Windows.Forms.CheckBox();
-            this.User = new System.Windows.Forms.ComboBox();
             this.DBName = new System.Windows.Forms.ComboBox();
             this.NameOfServer = new System.Windows.Forms.ComboBox();
             this.labelStatusOfConnection = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.Password = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.ProgressBarOfConn = new System.Windows.Forms.ProgressBar();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.ButtonForConn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Statusofauth = new System.Windows.Forms.Label();
+            this.buttonStatusAuth = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -94,7 +94,7 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Location = new System.Drawing.Point(116, 37);
+            this.splitContainer1.Location = new System.Drawing.Point(73, 12);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -109,17 +109,19 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.button1);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonStatusAuth);
+            this.splitContainer1.Panel2.Controls.Add(this.Statusofauth);
+            this.splitContainer1.Panel2.Controls.Add(this.UserName);
+            this.splitContainer1.Panel2.Controls.Add(this.bottonStatusConn);
             this.splitContainer1.Panel2.Controls.Add(this.ShowPassword);
-            this.splitContainer1.Panel2.Controls.Add(this.User);
             this.splitContainer1.Panel2.Controls.Add(this.DBName);
             this.splitContainer1.Panel2.Controls.Add(this.NameOfServer);
             this.splitContainer1.Panel2.Controls.Add(this.labelStatusOfConnection);
-            this.splitContainer1.Panel2.Controls.Add(this.label7);
             this.splitContainer1.Panel2.Controls.Add(this.Password);
             this.splitContainer1.Panel2.Controls.Add(this.label5);
-            this.splitContainer1.Size = new System.Drawing.Size(558, 323);
-            this.splitContainer1.SplitterDistance = 204;
+            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
+            this.splitContainer1.Size = new System.Drawing.Size(695, 366);
+            this.splitContainer1.SplitterDistance = 254;
             this.splitContainer1.TabIndex = 5;
             // 
             // label8
@@ -141,30 +143,39 @@
             this.label6.Text = "Подключение";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
+            // UserName
+            // 
+            this.UserName.Location = new System.Drawing.Point(40, 223);
+            this.UserName.Name = "UserName";
+            this.UserName.Size = new System.Drawing.Size(193, 22);
+            this.UserName.TabIndex = 22;
+            // 
+            // bottonStatusConn
+            // 
+            this.bottonStatusConn.Location = new System.Drawing.Point(10, 122);
+            this.bottonStatusConn.Name = "bottonStatusConn";
+            this.bottonStatusConn.Size = new System.Drawing.Size(188, 31);
+            this.bottonStatusConn.TabIndex = 21;
+            this.bottonStatusConn.Text = "Статус подключения:";
+            this.bottonStatusConn.UseVisualStyleBackColor = true;
+            this.bottonStatusConn.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ShowPassword
             // 
             this.ShowPassword.AutoSize = true;
-            this.ShowPassword.Location = new System.Drawing.Point(212, 297);
+            this.ShowPassword.Location = new System.Drawing.Point(180, 296);
             this.ShowPassword.Name = "ShowPassword";
             this.ShowPassword.Size = new System.Drawing.Size(18, 17);
             this.ShowPassword.TabIndex = 20;
             this.ShowPassword.UseVisualStyleBackColor = true;
             this.ShowPassword.CheckedChanged += new System.EventHandler(this.ShowPassword_CheckedChanged);
             // 
-            // User
-            // 
-            this.User.FormattingEnabled = true;
-            this.User.Location = new System.Drawing.Point(75, 225);
-            this.User.Name = "User";
-            this.User.Size = new System.Drawing.Size(193, 24);
-            this.User.TabIndex = 19;
-            // 
             // DBName
             // 
             this.DBName.FormattingEnabled = true;
             this.DBName.Items.AddRange(new object[] {
             "MilitaryCompany"});
-            this.DBName.Location = new System.Drawing.Point(45, 87);
+            this.DBName.Location = new System.Drawing.Point(10, 83);
             this.DBName.Name = "DBName";
             this.DBName.Size = new System.Drawing.Size(223, 24);
             this.DBName.TabIndex = 18;
@@ -175,7 +186,7 @@
             this.NameOfServer.FormattingEnabled = true;
             this.NameOfServer.Items.AddRange(new object[] {
             "HOME-PC"});
-            this.NameOfServer.Location = new System.Drawing.Point(45, 49);
+            this.NameOfServer.Location = new System.Drawing.Point(10, 45);
             this.NameOfServer.Name = "NameOfServer";
             this.NameOfServer.Size = new System.Drawing.Size(223, 24);
             this.NameOfServer.TabIndex = 17;
@@ -184,25 +195,16 @@
             // labelStatusOfConnection
             // 
             this.labelStatusOfConnection.AutoSize = true;
-            this.labelStatusOfConnection.Location = new System.Drawing.Point(72, 134);
+            this.labelStatusOfConnection.Location = new System.Drawing.Point(204, 129);
             this.labelStatusOfConnection.Name = "labelStatusOfConnection";
-            this.labelStatusOfConnection.Size = new System.Drawing.Size(46, 17);
+            this.labelStatusOfConnection.Size = new System.Drawing.Size(222, 17);
             this.labelStatusOfConnection.TabIndex = 16;
-            this.labelStatusOfConnection.Text = "label9";
+            this.labelStatusOfConnection.Text = "Выберите сервер и базу данных";
             this.labelStatusOfConnection.Click += new System.EventHandler(this.labelStatusOfConnection_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 134);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 17);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Статус:";
             // 
             // Password
             // 
-            this.Password.Location = new System.Drawing.Point(75, 261);
+            this.Password.Location = new System.Drawing.Point(40, 261);
             this.Password.Name = "Password";
             this.Password.Size = new System.Drawing.Size(193, 22);
             this.Password.TabIndex = 11;
@@ -211,7 +213,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(69, 297);
+            this.label5.Location = new System.Drawing.Point(37, 296);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(121, 17);
             this.label5.TabIndex = 10;
@@ -220,18 +222,14 @@
             // 
             // ProgressBarOfConn
             // 
-            this.ProgressBarOfConn.Location = new System.Drawing.Point(626, 384);
+            this.ProgressBarOfConn.Location = new System.Drawing.Point(632, 398);
             this.ProgressBarOfConn.Name = "ProgressBarOfConn";
             this.ProgressBarOfConn.Size = new System.Drawing.Size(136, 29);
             this.ProgressBarOfConn.TabIndex = 6;
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            // 
             // ButtonForConn
             // 
-            this.ButtonForConn.Location = new System.Drawing.Point(464, 384);
+            this.ButtonForConn.Location = new System.Drawing.Point(470, 398);
             this.ButtonForConn.Name = "ButtonForConn";
             this.ButtonForConn.Size = new System.Drawing.Size(139, 29);
             this.ButtonForConn.TabIndex = 17;
@@ -239,15 +237,24 @@
             this.ButtonForConn.UseVisualStyleBackColor = true;
             this.ButtonForConn.Click += new System.EventHandler(this.ButtonForConn_Click);
             // 
-            // button1
+            // Statusofauth
             // 
-            this.button1.Location = new System.Drawing.Point(3, 154);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 31);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Информация";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Statusofauth.AutoSize = true;
+            this.Statusofauth.Location = new System.Drawing.Point(268, 326);
+            this.Statusofauth.Name = "Statusofauth";
+            this.Statusofauth.Size = new System.Drawing.Size(76, 17);
+            this.Statusofauth.TabIndex = 24;
+            this.Statusofauth.Text = "Ожидание";
+            // 
+            // buttonStatusAuth
+            // 
+            this.buttonStatusAuth.Location = new System.Drawing.Point(40, 319);
+            this.buttonStatusAuth.Name = "buttonStatusAuth";
+            this.buttonStatusAuth.Size = new System.Drawing.Size(193, 31);
+            this.buttonStatusAuth.TabIndex = 25;
+            this.buttonStatusAuth.Text = "Статус авторизации:";
+            this.buttonStatusAuth.UseVisualStyleBackColor = true;
+            this.buttonStatusAuth.Click += new System.EventHandler(this.button2_Click);
             // 
             // WinForAuthorisation
             // 
@@ -282,14 +289,14 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox Password;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label labelStatusOfConnection;
         private System.Windows.Forms.Button ButtonForConn;
-        private System.Windows.Forms.ComboBox User;
         private System.Windows.Forms.ComboBox DBName;
         private System.Windows.Forms.ComboBox NameOfServer;
         private System.Windows.Forms.CheckBox ShowPassword;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bottonStatusConn;
+        private System.Windows.Forms.TextBox UserName;
+        private System.Windows.Forms.Label Statusofauth;
+        private System.Windows.Forms.Button buttonStatusAuth;
     }
 }
