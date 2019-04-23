@@ -11,11 +11,14 @@ namespace WindowsFormsApp1
     {
         public static SqlConnection GetDBConnection()
         {
-            string datasource = @"HOME-PC";
+
+            string dse = "HOME-PC";
+
+            string datasource = "HOME-PC";
             string database = "MilitaryCompany";
             string username = "SuperClient";
             string password = "123";
-            return DBSQLServerUtils.GetDBConnection(datasource, database, username, password);
+            return DBSQLServerUtils.GetDBConnection(datasource, database);//, username, password);
         }
     }
 }

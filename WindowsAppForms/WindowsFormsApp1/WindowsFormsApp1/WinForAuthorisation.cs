@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
 namespace WindowsFormsApp1
 {
+
     public partial class WinForAuthorisation : Form
     {
+
         public WinForAuthorisation()
         {
             InitializeComponent();
@@ -73,7 +78,25 @@ namespace WindowsFormsApp1
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            //Console.WriteLine(NameOfServer.SelectedItem.ToString());
+            //Console.WriteLine(NameOfServer.Items[NameOfServer.SelectedIndex].ToString());
+            if (DBName.SelectedIndex >= 0)
+            {
+                SqlConnection testconn = TestConn.TestNewConn(@NameOfServer.SelectedItem.ToString(), DBName.SelectedItem.ToString());
+                try
+                {
+                    testconn.Open();
+                    labelStatusOfConnection.Text = "Сервер готов к подклчючению";
+                    connIsReady = true;
+                }
+                catch (Exception ex)
+                {
+                    labelStatusOfConnection.Text = "Сервер не доступен. Нажмите на Инфо, чтобы узнать об ошибке";
+                    connIsReady = false;
+                    //ErrMessage = ex.Message;
+                }
+                connection = testconn;
+            }
         }
 
         private void ShowPassword_CheckedChanged(object sender, EventArgs e)
@@ -86,5 +109,48 @@ namespace WindowsFormsApp1
                 Password.UseSystemPasswordChar = true;
             }
         }
+
+        private void ButtonForConn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DBName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+               if (NameOfServer.SelectedIndex >= 0)
+                {
+                    SqlConnection testconn = TestConn.TestNewConn(@NameOfServer.SelectedItem.ToString(), DBName.SelectedItem.ToString());
+                    try
+                    {
+                    testconn.Open();
+                    labelStatusOfConnection.Text = "Сервер готов к подклчючению";
+                    connIsReady = true;
+                    }
+                    catch (Exception ex)
+                    {
+                    labelStatusOfConnection.Text = "Сервер не доступен. Нажмите на Инфо, чтобы узнать об ошибке";
+                    connIsReady = false;
+                    //ErrMessage = ex.Message;
+
+                }
+                connection = testconn;
+                }
+        }
+
+        SqlConnection connection;
+        string ErrMessage = "Выберите сервер и базу данных";
+        bool connIsReady = false;
+        bool loginIsMade = false;
+        private void labelStatusOfConnection_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            ErrandInfoMessage.MakeMessage(connection, connIsReady, loginIsMade);
+        }
+        
     }
 }

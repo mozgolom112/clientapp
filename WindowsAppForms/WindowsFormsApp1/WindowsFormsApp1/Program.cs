@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception e)
             {
-
+                Console.WriteLine(e.Message);
             }
             /*
              * //Нужны права для пользоватля, чтобы вызывать имена БД
@@ -48,7 +48,7 @@ namespace WindowsFormsApp1
             Console.WriteLine("\tСтрока подключения: {0}", conn.ConnectionString);
             Console.WriteLine("\tБаза данных: {0}", conn.Database);
             Console.WriteLine("\tСервер: {0}", conn.DataSource);
-            Console.WriteLine("\tВерсия сервера: {0}", conn.ServerVersion);
+         //  Console.WriteLine("\tВерсия сервера: {0}", conn.ServerVersion);
             Console.WriteLine("\tСостояние: {0}", conn.State);
             Console.WriteLine("\tWorkstationld: {0}", conn.WorkstationId);
             Console.WriteLine("\tКлиент: {0}", conn.ClientConnectionId);

@@ -16,5 +16,12 @@ namespace WindowsFormsApp1
             SqlConnection conn = new SqlConnection(connString);
             return conn;
         }
+        public static SqlConnection GetDBConnection(string datasource, string database)
+        {
+            //Data Source=HOME-PC;Initial Catalog=MilitaryCompany;Persist Security Info=True;User ID=SuperClient;Password=123
+            string connString = @"Data Source=" + datasource + ";Initial Catalog=" + database + ";Persist Security Info=False;";
+            SqlConnection conn = new SqlConnection(connString);
+            return conn;
+        }
     }
 }
