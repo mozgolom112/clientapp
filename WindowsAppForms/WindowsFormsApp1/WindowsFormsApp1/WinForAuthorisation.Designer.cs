@@ -33,19 +33,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.ProgressBarOfConn = new System.Windows.Forms.ProgressBar();
-            this.ShowPassword = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.Password = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.StatusOfConnection = new System.Windows.Forms.Label();
-            this.ButtonForConn = new System.Windows.Forms.Button();
-            this.NameOfServer = new System.Windows.Forms.ComboBox();
-            this.DBName = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.User = new System.Windows.Forms.ComboBox();
+            this.DBName = new System.Windows.Forms.ComboBox();
+            this.NameOfServer = new System.Windows.Forms.ComboBox();
+            this.StatusOfConnection = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Password = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.ProgressBarOfConn = new System.Windows.Forms.ProgressBar();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.ButtonForConn = new System.Windows.Forms.Button();
+            this.ShowPassword = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -108,6 +108,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.ShowPassword);
             this.splitContainer1.Panel2.Controls.Add(this.User);
             this.splitContainer1.Panel2.Controls.Add(this.DBName);
             this.splitContainer1.Panel2.Controls.Add(this.NameOfServer);
@@ -115,45 +116,18 @@
             this.splitContainer1.Panel2.Controls.Add(this.label7);
             this.splitContainer1.Panel2.Controls.Add(this.Password);
             this.splitContainer1.Panel2.Controls.Add(this.label5);
-            this.splitContainer1.Panel2.Controls.Add(this.ShowPassword);
             this.splitContainer1.Size = new System.Drawing.Size(558, 306);
             this.splitContainer1.SplitterDistance = 204;
             this.splitContainer1.TabIndex = 5;
             // 
-            // ProgressBarOfConn
+            // label8
             // 
-            this.ProgressBarOfConn.Location = new System.Drawing.Point(626, 385);
-            this.ProgressBarOfConn.Name = "ProgressBarOfConn";
-            this.ProgressBarOfConn.Size = new System.Drawing.Size(136, 29);
-            this.ProgressBarOfConn.TabIndex = 6;
-            // 
-            // ShowPassword
-            // 
-            this.ShowPassword.AutoSize = true;
-            this.ShowPassword.Location = new System.Drawing.Point(196, 264);
-            this.ShowPassword.Name = "ShowPassword";
-            this.ShowPassword.Size = new System.Drawing.Size(17, 16);
-            this.ShowPassword.TabIndex = 7;
-            this.ShowPassword.TabStop = true;
-            this.ShowPassword.UseVisualStyleBackColor = true;
-            this.ShowPassword.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(69, 264);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(121, 17);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Показать пароль";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // Password
-            // 
-            this.Password.Location = new System.Drawing.Point(75, 228);
-            this.Password.Name = "Password";
-            this.Password.Size = new System.Drawing.Size(193, 22);
-            this.Password.TabIndex = 11;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(46, 170);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(94, 17);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Авторизация";
             // 
             // label6
             // 
@@ -165,27 +139,34 @@
             this.label6.Text = "Подключение";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
-            // label8
+            // User
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(46, 170);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(94, 17);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Авторизация";
+            this.User.FormattingEnabled = true;
+            this.User.Location = new System.Drawing.Point(75, 192);
+            this.User.Name = "User";
+            this.User.Size = new System.Drawing.Size(193, 24);
+            this.User.TabIndex = 19;
             // 
-            // label7
+            // DBName
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 134);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 17);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Статус:";
+            this.DBName.FormattingEnabled = true;
+            this.DBName.Items.AddRange(new object[] {
+            "MilitaryCompany"});
+            this.DBName.Location = new System.Drawing.Point(45, 87);
+            this.DBName.Name = "DBName";
+            this.DBName.Size = new System.Drawing.Size(223, 24);
+            this.DBName.TabIndex = 18;
             // 
-            // backgroundWorker1
+            // NameOfServer
             // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.NameOfServer.FormattingEnabled = true;
+            this.NameOfServer.Items.AddRange(new object[] {
+            "HOME - PC"});
+            this.NameOfServer.Location = new System.Drawing.Point(45, 49);
+            this.NameOfServer.Name = "NameOfServer";
+            this.NameOfServer.Size = new System.Drawing.Size(223, 24);
+            this.NameOfServer.TabIndex = 17;
+            this.NameOfServer.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // StatusOfConnection
             // 
@@ -196,6 +177,44 @@
             this.StatusOfConnection.TabIndex = 16;
             this.StatusOfConnection.Text = "label9";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(4, 134);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(57, 17);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Статус:";
+            // 
+            // Password
+            // 
+            this.Password.Location = new System.Drawing.Point(75, 228);
+            this.Password.Name = "Password";
+            this.Password.Size = new System.Drawing.Size(193, 22);
+            this.Password.TabIndex = 11;
+            this.Password.UseSystemPasswordChar = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(69, 264);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(121, 17);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Показать пароль";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // ProgressBarOfConn
+            // 
+            this.ProgressBarOfConn.Location = new System.Drawing.Point(626, 385);
+            this.ProgressBarOfConn.Name = "ProgressBarOfConn";
+            this.ProgressBarOfConn.Size = new System.Drawing.Size(136, 29);
+            this.ProgressBarOfConn.TabIndex = 6;
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
             // ButtonForConn
             // 
             this.ButtonForConn.Location = new System.Drawing.Point(464, 385);
@@ -205,32 +224,15 @@
             this.ButtonForConn.Text = "Соединить";
             this.ButtonForConn.UseVisualStyleBackColor = true;
             // 
-            // NameOfServer
+            // ShowPassword
             // 
-            this.NameOfServer.FormattingEnabled = true;
-            this.NameOfServer.Location = new System.Drawing.Point(45, 49);
-            this.NameOfServer.Name = "NameOfServer";
-            this.NameOfServer.Size = new System.Drawing.Size(223, 24);
-            this.NameOfServer.TabIndex = 17;
-            this.NameOfServer.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            this.NameOfServer.Items.Add(@"HOME - PC");
-            // 
-            // DBName
-            // 
-            this.DBName.FormattingEnabled = true;
-            this.DBName.Location = new System.Drawing.Point(45, 87);
-            this.DBName.Name = "DBName";
-            this.DBName.Size = new System.Drawing.Size(223, 24);
-            this.DBName.TabIndex = 18;
-            this.DBName.Items.Add("MilitaryCompany");
-            // 
-            // User
-            // 
-            this.User.FormattingEnabled = true;
-            this.User.Location = new System.Drawing.Point(75, 192);
-            this.User.Name = "User";
-            this.User.Size = new System.Drawing.Size(193, 24);
-            this.User.TabIndex = 19;
+            this.ShowPassword.AutoSize = true;
+            this.ShowPassword.Location = new System.Drawing.Point(212, 264);
+            this.ShowPassword.Name = "ShowPassword";
+            this.ShowPassword.Size = new System.Drawing.Size(18, 17);
+            this.ShowPassword.TabIndex = 20;
+            this.ShowPassword.UseVisualStyleBackColor = true;
+            this.ShowPassword.CheckedChanged += new System.EventHandler(this.ShowPassword_CheckedChanged);
             // 
             // WinForAuthorisation
             // 
@@ -261,7 +263,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RadioButton ShowPassword;
         private System.Windows.Forms.ProgressBar ProgressBarOfConn;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox Password;
@@ -273,5 +274,6 @@
         private System.Windows.Forms.ComboBox User;
         private System.Windows.Forms.ComboBox DBName;
         private System.Windows.Forms.ComboBox NameOfServer;
+        private System.Windows.Forms.CheckBox ShowPassword;
     }
 }

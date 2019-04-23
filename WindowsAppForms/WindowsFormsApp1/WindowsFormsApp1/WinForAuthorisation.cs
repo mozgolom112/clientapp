@@ -54,7 +54,7 @@ namespace WindowsFormsApp1
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -74,6 +74,17 @@ namespace WindowsFormsApp1
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void ShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ShowPassword.Checked == true) {
+                Password.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                Password.UseSystemPasswordChar = true;
+            }
         }
     }
 }
