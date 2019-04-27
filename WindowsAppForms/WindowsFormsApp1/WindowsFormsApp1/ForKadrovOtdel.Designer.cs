@@ -166,7 +166,7 @@
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.groupBox2);
             this.Name = "ForKadrovOtdel";
-            this.Text = "ForKadrovOtdel";
+            this.Text = "Кадровый отдел";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
