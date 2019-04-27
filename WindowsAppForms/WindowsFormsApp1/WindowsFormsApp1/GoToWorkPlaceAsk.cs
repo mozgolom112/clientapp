@@ -36,8 +36,6 @@ namespace WindowsFormsApp1
                                         MessageBoxButtons.OK);
                         break;
                 }
-
-                current.Show();
                 return;
             }
             else

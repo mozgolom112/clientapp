@@ -37,10 +37,28 @@ namespace WindowsFormsApp1
             if (txtBoxNewTask.Text != "")
             {
                 chListBoxTasks.Items.Add(txtBoxNewTask.Text);
+                txtBoxNewTask.Clear();
             }
             else
             {
                 MessageBox.Show("Введите задачу", "Добавление", MessageBoxButtons.OK);
+            }
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Вы уверены, что хотите выйти? Не сохраненый результат пропадет.", "Выход", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+                this.Dispose();
+
+                WinForAuthorisation winForAuthorisation = new WinForAuthorisation();
+                winForAuthorisation.Show();
+            }
+            else
+            {
+                return;
             }
         }
     }
