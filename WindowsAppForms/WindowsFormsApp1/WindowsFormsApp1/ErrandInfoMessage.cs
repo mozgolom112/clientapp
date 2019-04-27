@@ -16,6 +16,7 @@ namespace WindowsFormsApp1
         {
             string message ="";
             string caption ="";
+            if(conn!= null) { 
             if (connIsOpen)
             {
                 message = "\t\tСоединение установлено. \nСвойства подключения:"
@@ -47,9 +48,13 @@ namespace WindowsFormsApp1
 
 
             result = MessageBox.Show(message, caption, buttons);
-            
-            
-            
+            }
+            else
+            {
+                MessageBox.Show("Попытки подключения нет. Статуса ошибки нет", "Информация", MessageBoxButtons.OK);
+            }
+
+
         }
     }
 }

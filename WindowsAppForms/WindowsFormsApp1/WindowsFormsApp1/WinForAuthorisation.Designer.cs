@@ -19,7 +19,6 @@
             }
             base.Dispose(disposing);
         }
-
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -35,6 +34,8 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.buttonStatusAuth = new System.Windows.Forms.Button();
+            this.Statusofauth = new System.Windows.Forms.Label();
             this.UserName = new System.Windows.Forms.TextBox();
             this.bottonStatusConn = new System.Windows.Forms.Button();
             this.ShowPassword = new System.Windows.Forms.CheckBox();
@@ -43,10 +44,7 @@
             this.labelStatusOfConnection = new System.Windows.Forms.Label();
             this.Password = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.ProgressBarOfConn = new System.Windows.Forms.ProgressBar();
             this.ButtonForConn = new System.Windows.Forms.Button();
-            this.Statusofauth = new System.Windows.Forms.Label();
-            this.buttonStatusAuth = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -109,6 +107,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.ButtonForConn);
             this.splitContainer1.Panel2.Controls.Add(this.buttonStatusAuth);
             this.splitContainer1.Panel2.Controls.Add(this.Statusofauth);
             this.splitContainer1.Panel2.Controls.Add(this.UserName);
@@ -120,7 +119,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.Password);
             this.splitContainer1.Panel2.Controls.Add(this.label5);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(695, 366);
+            this.splitContainer1.Size = new System.Drawing.Size(695, 391);
             this.splitContainer1.SplitterDistance = 254;
             this.splitContainer1.TabIndex = 5;
             // 
@@ -143,11 +142,30 @@
             this.label6.Text = "Подключение";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
+            // buttonStatusAuth
+            // 
+            this.buttonStatusAuth.Location = new System.Drawing.Point(10, 346);
+            this.buttonStatusAuth.Name = "buttonStatusAuth";
+            this.buttonStatusAuth.Size = new System.Drawing.Size(193, 31);
+            this.buttonStatusAuth.TabIndex = 25;
+            this.buttonStatusAuth.Text = "Статус авторизации:";
+            this.buttonStatusAuth.UseVisualStyleBackColor = true;
+            this.buttonStatusAuth.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // Statusofauth
+            // 
+            this.Statusofauth.AutoSize = true;
+            this.Statusofauth.Location = new System.Drawing.Point(237, 353);
+            this.Statusofauth.Name = "Statusofauth";
+            this.Statusofauth.Size = new System.Drawing.Size(76, 17);
+            this.Statusofauth.TabIndex = 24;
+            this.Statusofauth.Text = "Ожидание";
+            // 
             // UserName
             // 
-            this.UserName.Location = new System.Drawing.Point(40, 223);
+            this.UserName.Location = new System.Drawing.Point(10, 223);
             this.UserName.Name = "UserName";
-            this.UserName.Size = new System.Drawing.Size(193, 22);
+            this.UserName.Size = new System.Drawing.Size(223, 22);
             this.UserName.TabIndex = 22;
             // 
             // bottonStatusConn
@@ -163,7 +181,7 @@
             // ShowPassword
             // 
             this.ShowPassword.AutoSize = true;
-            this.ShowPassword.Location = new System.Drawing.Point(180, 296);
+            this.ShowPassword.Location = new System.Drawing.Point(364, 267);
             this.ShowPassword.Name = "ShowPassword";
             this.ShowPassword.Size = new System.Drawing.Size(18, 17);
             this.ShowPassword.TabIndex = 20;
@@ -204,32 +222,25 @@
             // 
             // Password
             // 
-            this.Password.Location = new System.Drawing.Point(40, 261);
+            this.Password.Location = new System.Drawing.Point(10, 261);
             this.Password.Name = "Password";
-            this.Password.Size = new System.Drawing.Size(193, 22);
+            this.Password.Size = new System.Drawing.Size(223, 22);
             this.Password.TabIndex = 11;
             this.Password.UseSystemPasswordChar = true;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(37, 296);
+            this.label5.Location = new System.Drawing.Point(237, 266);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(121, 17);
             this.label5.TabIndex = 10;
             this.label5.Text = "Показать пароль";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // ProgressBarOfConn
-            // 
-            this.ProgressBarOfConn.Location = new System.Drawing.Point(632, 398);
-            this.ProgressBarOfConn.Name = "ProgressBarOfConn";
-            this.ProgressBarOfConn.Size = new System.Drawing.Size(136, 29);
-            this.ProgressBarOfConn.TabIndex = 6;
-            // 
             // ButtonForConn
             // 
-            this.ButtonForConn.Location = new System.Drawing.Point(470, 398);
+            this.ButtonForConn.Location = new System.Drawing.Point(10, 311);
             this.ButtonForConn.Name = "ButtonForConn";
             this.ButtonForConn.Size = new System.Drawing.Size(139, 29);
             this.ButtonForConn.TabIndex = 17;
@@ -237,32 +248,11 @@
             this.ButtonForConn.UseVisualStyleBackColor = true;
             this.ButtonForConn.Click += new System.EventHandler(this.ButtonForConn_Click);
             // 
-            // Statusofauth
-            // 
-            this.Statusofauth.AutoSize = true;
-            this.Statusofauth.Location = new System.Drawing.Point(268, 326);
-            this.Statusofauth.Name = "Statusofauth";
-            this.Statusofauth.Size = new System.Drawing.Size(76, 17);
-            this.Statusofauth.TabIndex = 24;
-            this.Statusofauth.Text = "Ожидание";
-            // 
-            // buttonStatusAuth
-            // 
-            this.buttonStatusAuth.Location = new System.Drawing.Point(40, 319);
-            this.buttonStatusAuth.Name = "buttonStatusAuth";
-            this.buttonStatusAuth.Size = new System.Drawing.Size(193, 31);
-            this.buttonStatusAuth.TabIndex = 25;
-            this.buttonStatusAuth.Text = "Статус авторизации:";
-            this.buttonStatusAuth.UseVisualStyleBackColor = true;
-            this.buttonStatusAuth.Click += new System.EventHandler(this.button2_Click);
-            // 
             // WinForAuthorisation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.ButtonForConn);
-            this.Controls.Add(this.ProgressBarOfConn);
             this.Controls.Add(this.splitContainer1);
             this.Name = "WinForAuthorisation";
             this.Text = "Соединение с сервером";
@@ -285,7 +275,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ProgressBar ProgressBarOfConn;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox Password;
         private System.Windows.Forms.Label label8;

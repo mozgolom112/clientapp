@@ -55,7 +55,10 @@ namespace WindowsFormsApp1
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WinForAuthorisation());
+            WinForAuthorisation winForAuthorisation = new WinForAuthorisation();
+            winForAuthorisation.Show();
+            Application.Run();
+            
             /*
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

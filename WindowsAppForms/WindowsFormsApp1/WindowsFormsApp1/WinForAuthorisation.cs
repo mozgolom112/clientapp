@@ -109,7 +109,7 @@ namespace WindowsFormsApp1
                 Password.UseSystemPasswordChar = true;
             }
         }
-
+        
         private void ButtonForConn_Click(object sender, EventArgs e)
         {
             if (NameOfServer.SelectedIndex < 0)
@@ -144,6 +144,8 @@ namespace WindowsFormsApp1
                 connIsReady = true;
                 
                 Statusofauth.Text = "Успешно";
+
+                GoToWorkPlaceAsk.MakeMessage(UserName.Text, this);
 
             }
             catch (Exception err)
