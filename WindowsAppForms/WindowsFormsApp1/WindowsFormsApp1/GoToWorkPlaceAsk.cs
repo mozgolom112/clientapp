@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace WindowsFormsApp1
 {
     class GoToWorkPlaceAsk
     {
-        public static void MakeMessage(string UserName, WinForAuthorisation current)
+        public static void MakeMessage(string UserName, SqlConnection conn, WinForAuthorisation current)
         {
             DialogResult result = MessageBox.Show(
        "Хотите перейти на рабочий стол?",
@@ -18,7 +19,7 @@ namespace WindowsFormsApp1
        MessageBoxIcon.Information,
        MessageBoxDefaultButton.Button1,
        MessageBoxOptions.DefaultDesktopOnly);
-
+            
             if (result == DialogResult.Yes)
             {
                 current.Close();
@@ -26,7 +27,7 @@ namespace WindowsFormsApp1
                 switch (UserName)
                 {
                     case "SuperClient":
-                        ForKadrovOtdel winForKadrov = new ForKadrovOtdel();
+                        ForKadrovOtdel winForKadrov = new ForKadrovOtdel(conn);
                         winForKadrov.Show();
                         break;
                     default:

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,11 @@ namespace WindowsFormsApp1
 {
     public partial class ForKadrovOtdel : Form
     {
-        public ForKadrovOtdel()
+        SqlConnection connection = null;
+        public ForKadrovOtdel(SqlConnection conn)
         {
             InitializeComponent();
+            this.connection = conn;
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)

@@ -145,7 +145,7 @@ namespace WindowsFormsApp1
                 
                 Statusofauth.Text = "Успешно";
 
-                GoToWorkPlaceAsk.MakeMessage(UserName.Text, this);
+                GoToWorkPlaceAsk.MakeMessage(UserName.Text, connectionforuser, this);
 
             }
             catch (Exception err)
@@ -179,7 +179,7 @@ namespace WindowsFormsApp1
         }
 
         SqlConnection connectiontest;
-
+        
         SqlConnection connectionforuser;
         string ErrMessage = "Выберите сервер и базу данных";
         bool connIsReady = false;

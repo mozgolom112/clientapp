@@ -67,7 +67,6 @@
             this.groupBox2.Size = new System.Drawing.Size(590, 453);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
             // 
             // buttonAddTask
             // 
@@ -124,7 +123,6 @@
             this.groupBox1.Size = new System.Drawing.Size(297, 453);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
             // 
             // buttonExit
             // 
