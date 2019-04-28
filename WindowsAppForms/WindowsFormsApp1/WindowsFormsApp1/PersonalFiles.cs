@@ -243,7 +243,7 @@ namespace WindowsFormsApp1
             }
 
             string strfordelete = "Delete from personal_file where ID = ";
-
+            
             SqlTransaction transaction = connection.BeginTransaction();
             SqlCommand command = connection.CreateCommand();
             command.Transaction = transaction;
@@ -255,15 +255,28 @@ namespace WindowsFormsApp1
                     command.ExecuteNonQuery();
                 }
 
-                transaction.Commit();
-                Console.WriteLine("Commit");
+                DialogResult result = MessageBox.Show("\tВыбранные данные успешно готовы к удалению. \n\tПодтвердите удаление" +
+                    "\n\t Внимание! Данные востановить будет невозможно!", "Удаление", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    transaction.Commit();
+                    buttonSearch.PerformClick();
+                }
+                else
+                {
+                    return;
+                }
+                
 
             }
             catch(Exception excp)
             {
                 Console.WriteLine(excp.Message);
-                Console.WriteLine("Rollback");
+                //Console.WriteLine("Rollback");
+                MessageBox.Show("\tОшибка удаления!" +
+                    "\n" + excp.Message + "\n\tПроверьте эту ошибку или обратитесь в службу поддержки", "Удаление", MessageBoxButtons.OK);
                 transaction.Rollback();
+                return;
             }
         }
     }
