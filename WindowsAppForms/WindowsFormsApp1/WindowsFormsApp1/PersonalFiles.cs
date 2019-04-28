@@ -166,27 +166,30 @@ namespace WindowsFormsApp1
         {
 
             //try { connection.Open(); } catch { return; } //проверяем еще раз коннект
-            Console.WriteLine(ValueOfSearch);
             SqlDataAdapter adapter;
             DataSet dataSet;
-            string sql = 
-                             "create table #result_of_search(ID int, " +
-                             "Surname varchar(50), " +
-                             "Firstname varchar(50), " +
-                             "SecondName varchar(50), " +
-                             "YoB int, Spec varchar(100), " +
-                             "Pos varchar(50),Salary int, " +
-                             "Stat varchar(50)) " +
-                         "insert #result_of_search " +
-                         "exec prall_about_person_info " +
-                         "SELECT * FROM #result_of_search ";
-
+            string sql;
+            listViewPerson.Items.Clear();
             if ((cmboBoxSettingsOfSearch.SelectedIndex == 7) ||(cmbBoxStringOfSearch.Text=="")) //если выбрать все, то вызываем просто процедуру
             {
                 sql = "Exec prall_about_person_info";
             }
             else {
-                        sql += "WHERE "+ TypeOfSearch + " = " + ValueOfSearch;
+                ValueOfSearch = cmbBoxStringOfSearch.Text.ToString();
+                    sql = 
+                             "create table #result_of_search(ID int, " +
+                             "Surname varchar(50), " +
+                             "Firstname varchar(50), " +
+                             "SecondName varchar(50), " +
+                             "yearofbirthday int, " +
+                             "Specialize varchar(100), " +
+                             "Position varchar(50), " +
+                             "Salary int, " +
+                             "Status varchar(50)) " +
+                         "insert #result_of_search " +
+                         "exec prall_about_person_info " +
+                         "SELECT * FROM #result_of_search "+
+                         "WHERE " + TypeOfSearch + " = " + "'" +ValueOfSearch + "'";
             }
 
             adapter = new SqlDataAdapter(sql, connection);
@@ -197,10 +200,13 @@ namespace WindowsFormsApp1
 
             DataTableReader reader = dataSet.CreateDataReader();
 
-           // SqlCommand sqlCom = new SqlCommand(sql, connection);
-            //SqlDataReader reader = sqlCom.ExecuteReader(CommandBehavior.CloseConnection))
+            try { 
+            SqlCommand rmTable = new SqlCommand("drop table #result_of_search", connection);
+            rmTable.ExecuteNonQuery();
+            }
+            catch { }
 
-                while (reader.Read())
+            while (reader.Read())
                 {
 
                     string[] lvi_string = new string[reader.FieldCount];
