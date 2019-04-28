@@ -336,17 +336,7 @@ namespace WindowsFormsApp1
 
         private void buttonDeletePersons_Click(object sender, EventArgs e)
         {
-
             
-            DataSet DataSetWay = DataCurrentSet;
-
-            SqlDataAdapter adapter = new SqlDataAdapter();
-
-
-
-
-
-
             if (listViewPerson.CheckedItems.Count == 0)
             {
                 MessageBox.Show("Выберите личные дела для удаления", "Удаление", MessageBoxButtons.OK);
@@ -375,17 +365,8 @@ namespace WindowsFormsApp1
                 for(i=0; i < listViewPerson.CheckedItems.Count; i++)
                 {
 
-
-                    string sql = strfordelete + IDForDelete[i];
-                    
-                    command.CommandText = sql;
-                    if (i == 0)
-                    {
-                        adapter = new SqlDataAdapter(sql, connection);
-                    }
-                    else { 
-                    adapter.DeleteCommand = new SqlCommand(sql, connection);
-                    }
+                    string sql = strfordelete + IDForDelete[i];                  
+                    command.CommandText = sql;                 
                     command.ExecuteNonQuery();
                 }
 
@@ -394,11 +375,9 @@ namespace WindowsFormsApp1
                 if (result == DialogResult.Yes)
                 {
 
-                    //buttonUpdateTable.PerformClick(); //надо заменить
+                    
                     transaction.Commit();
-                    adapter.Update(DataCurrentSet);
-                    DataCurrentSet.AcceptChanges();
-
+                    buttonUpdateTable.PerformClick(); 
                     buttonSearch.PerformClick();
 
                 }
