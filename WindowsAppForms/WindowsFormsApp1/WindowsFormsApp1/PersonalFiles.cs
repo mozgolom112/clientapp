@@ -222,5 +222,49 @@ namespace WindowsFormsApp1
             
             
         }
+
+        private void buttonDeletePersons_Click(object sender, EventArgs e)
+        {
+            if(listViewPerson.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Выберите личные дела для удаления", "Удаление", MessageBoxButtons.OK);
+                return;
+            }
+
+            string[] IDForDelete = new string[listViewPerson.CheckedItems.Count];
+
+            ListView.CheckedListViewItemCollection checkedItems = listViewPerson.CheckedItems;
+            int i = 0;
+            foreach (ListViewItem item in checkedItems)
+            {
+
+                IDForDelete[i] = item.SubItems[0].Text;
+                i++;
+            }
+
+            string strfordelete = "Delete from personal_file where ID = ";
+
+            SqlTransaction transaction = connection.BeginTransaction();
+            SqlCommand command = connection.CreateCommand();
+            command.Transaction = transaction;
+            try {
+                for(i=0; i < listViewPerson.CheckedItems.Count; i++)
+                {
+                    string sql = strfordelete + IDForDelete[i];
+                    command.CommandText = sql;
+                    command.ExecuteNonQuery();
+                }
+
+                transaction.Commit();
+                Console.WriteLine("Commit");
+
+            }
+            catch(Exception excp)
+            {
+                Console.WriteLine(excp.Message);
+                Console.WriteLine("Rollback");
+                transaction.Rollback();
+            }
+        }
     }
 }

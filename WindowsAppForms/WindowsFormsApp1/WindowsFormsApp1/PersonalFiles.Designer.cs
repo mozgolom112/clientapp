@@ -103,6 +103,7 @@
             this.buttonDeletePersons.TabIndex = 3;
             this.buttonDeletePersons.Text = "Удалить";
             this.buttonDeletePersons.UseVisualStyleBackColor = true;
+            this.buttonDeletePersons.Click += new System.EventHandler(this.buttonDeletePersons_Click);
             // 
             // buttonSearch
             // 
@@ -269,7 +270,7 @@
             this.Status});
             this.listViewPerson.Location = new System.Drawing.Point(150, 71);
             this.listViewPerson.Name = "listViewPerson";
-            this.listViewPerson.Size = new System.Drawing.Size(643, 336);
+            this.listViewPerson.Size = new System.Drawing.Size(843, 336);
             this.listViewPerson.TabIndex = 0;
             this.listViewPerson.UseCompatibleStateImageBehavior = false;
             this.listViewPerson.View = System.Windows.Forms.View.Details;
@@ -279,7 +280,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(842, 499);
+            this.ClientSize = new System.Drawing.Size(1005, 517);
             this.Controls.Add(this.cmbBoxStringOfSearch);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
