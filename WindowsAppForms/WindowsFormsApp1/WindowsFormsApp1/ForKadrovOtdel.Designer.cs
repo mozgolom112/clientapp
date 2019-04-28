@@ -151,6 +151,7 @@
             this.buttonPersonFile.TabIndex = 0;
             this.buttonPersonFile.Text = "Личные дела";
             this.buttonPersonFile.UseVisualStyleBackColor = true;
+            this.buttonPersonFile.Click += new System.EventHandler(this.buttonPersonFile_Click);
             // 
             // militaryCompanyDataSet1
             // 

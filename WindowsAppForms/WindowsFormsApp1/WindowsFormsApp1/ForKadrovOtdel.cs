@@ -13,7 +13,8 @@ namespace WindowsFormsApp1
 {
     public partial class ForKadrovOtdel : Form
     {
-        SqlConnection connection = null;
+        private SqlConnection connection = null;
+
         public ForKadrovOtdel(SqlConnection conn)
         {
             InitializeComponent();
@@ -63,6 +64,13 @@ namespace WindowsFormsApp1
             {
                 return;
             }
+        }
+
+        private void buttonPersonFile_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            PersonalFiles personalFiles = new PersonalFiles(connection);
+            personalFiles.Show();
         }
     }
 }

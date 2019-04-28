@@ -57,6 +57,12 @@ namespace WindowsFormsApp1
             Application.SetCompatibleTextRenderingDefault(false);
             WinForAuthorisation winForAuthorisation = new WinForAuthorisation();
             winForAuthorisation.Show();
+
+         
+
+            //PersonalFiles personalFiles = new PersonalFiles();
+           // personalFiles.Show();
+
             Application.Run();
             
             /*

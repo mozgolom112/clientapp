@@ -42,20 +42,21 @@
             this.Position = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Salary = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.buttonMkNewPerson = new System.Windows.Forms.Button();
+            this.buttonChangePersons = new System.Windows.Forms.Button();
+            this.buttonDeletePersons = new System.Windows.Forms.Button();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.cmboBoxSettingsOfSearch = new System.Windows.Forms.ComboBox();
+            this.cmboBoxSelectSettings = new System.Windows.Forms.ComboBox();
+            this.buttonSelect = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxParaSelectFrom = new System.Windows.Forms.TextBox();
+            this.textBoxParaSelectTo = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonUpdateTable = new System.Windows.Forms.Button();
+            this.cmbBoxStringOfSearch = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.militaryCompanyDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personalfileBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -133,73 +134,68 @@
             // 
             this.Status.Text = "Статус";
             // 
-            // button1
+            // buttonMkNewPerson
             // 
-            this.button1.Location = new System.Drawing.Point(10, 37);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 30);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Создать";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonMkNewPerson.Location = new System.Drawing.Point(10, 37);
+            this.buttonMkNewPerson.Name = "buttonMkNewPerson";
+            this.buttonMkNewPerson.Size = new System.Drawing.Size(116, 30);
+            this.buttonMkNewPerson.TabIndex = 1;
+            this.buttonMkNewPerson.Text = "Создать";
+            this.buttonMkNewPerson.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonChangePersons
             // 
-            this.button2.Location = new System.Drawing.Point(10, 92);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 30);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Изменить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonChangePersons.Location = new System.Drawing.Point(10, 92);
+            this.buttonChangePersons.Name = "buttonChangePersons";
+            this.buttonChangePersons.Size = new System.Drawing.Size(116, 30);
+            this.buttonChangePersons.TabIndex = 2;
+            this.buttonChangePersons.Text = "Изменить";
+            this.buttonChangePersons.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonDeletePersons
             // 
-            this.button3.Location = new System.Drawing.Point(10, 148);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(116, 30);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Удалить";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonDeletePersons.Location = new System.Drawing.Point(10, 148);
+            this.buttonDeletePersons.Name = "buttonDeletePersons";
+            this.buttonDeletePersons.Size = new System.Drawing.Size(116, 30);
+            this.buttonDeletePersons.TabIndex = 3;
+            this.buttonDeletePersons.Text = "Удалить";
+            this.buttonDeletePersons.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // buttonSearch
             // 
-            this.button4.Location = new System.Drawing.Point(150, 19);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(96, 31);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Поиск";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonSearch.Location = new System.Drawing.Point(150, 19);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(96, 31);
+            this.buttonSearch.TabIndex = 4;
+            this.buttonSearch.Text = "Поиск";
+            this.buttonSearch.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // cmboBoxSettingsOfSearch
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(263, 26);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(157, 24);
-            this.comboBox1.TabIndex = 6;
+            this.cmboBoxSettingsOfSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmboBoxSettingsOfSearch.FormattingEnabled = true;
+            this.cmboBoxSettingsOfSearch.Location = new System.Drawing.Point(263, 26);
+            this.cmboBoxSettingsOfSearch.Name = "cmboBoxSettingsOfSearch";
+            this.cmboBoxSettingsOfSearch.Size = new System.Drawing.Size(157, 24);
+            this.cmboBoxSettingsOfSearch.TabIndex = 6;
+            this.cmboBoxSettingsOfSearch.SelectedIndexChanged += new System.EventHandler(this.cmboBoxSettingsOfSearch_SelectedIndexChanged);
             // 
-            // textBox1
+            // cmboBoxSelectSettings
             // 
-            this.textBox1.Location = new System.Drawing.Point(437, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(356, 22);
-            this.textBox1.TabIndex = 7;
+            this.cmboBoxSelectSettings.FormattingEnabled = true;
+            this.cmboBoxSelectSettings.Location = new System.Drawing.Point(263, 434);
+            this.cmboBoxSelectSettings.Name = "cmboBoxSelectSettings";
+            this.cmboBoxSelectSettings.Size = new System.Drawing.Size(157, 24);
+            this.cmboBoxSelectSettings.TabIndex = 8;
             // 
-            // comboBox2
+            // buttonSelect
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(263, 434);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(157, 24);
-            this.comboBox2.TabIndex = 8;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(150, 424);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(96, 34);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "Выборка";
-            this.button5.UseVisualStyleBackColor = true;
+            this.buttonSelect.Location = new System.Drawing.Point(150, 424);
+            this.buttonSelect.Name = "buttonSelect";
+            this.buttonSelect.Size = new System.Drawing.Size(96, 34);
+            this.buttonSelect.TabIndex = 9;
+            this.buttonSelect.Text = "Выборка";
+            this.buttonSelect.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -220,27 +216,27 @@
             this.label2.TabIndex = 11;
             this.label2.Text = "До";
             // 
-            // textBox2
+            // textBoxParaSelectFrom
             // 
-            this.textBox2.Location = new System.Drawing.Point(38, 38);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 12;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBoxParaSelectFrom.Location = new System.Drawing.Point(38, 38);
+            this.textBoxParaSelectFrom.Name = "textBoxParaSelectFrom";
+            this.textBoxParaSelectFrom.Size = new System.Drawing.Size(100, 22);
+            this.textBoxParaSelectFrom.TabIndex = 12;
+            this.textBoxParaSelectFrom.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // textBox3
+            // textBoxParaSelectTo
             // 
-            this.textBox3.Location = new System.Drawing.Point(201, 38);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 22);
-            this.textBox3.TabIndex = 13;
+            this.textBoxParaSelectTo.Location = new System.Drawing.Point(201, 38);
+            this.textBoxParaSelectTo.Name = "textBoxParaSelectTo";
+            this.textBoxParaSelectTo.Size = new System.Drawing.Size(100, 22);
+            this.textBoxParaSelectTo.TabIndex = 13;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.textBoxParaSelectTo);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBoxParaSelectFrom);
             this.groupBox1.Location = new System.Drawing.Point(467, 413);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(326, 79);
@@ -250,28 +246,46 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.buttonUpdateTable);
+            this.groupBox2.Controls.Add(this.buttonDeletePersons);
+            this.groupBox2.Controls.Add(this.buttonMkNewPerson);
+            this.groupBox2.Controls.Add(this.buttonChangePersons);
             this.groupBox2.Location = new System.Drawing.Point(12, 132);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(132, 214);
+            this.groupBox2.Size = new System.Drawing.Size(132, 275);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Операции";
+            // 
+            // buttonUpdateTable
+            // 
+            this.buttonUpdateTable.Location = new System.Drawing.Point(10, 245);
+            this.buttonUpdateTable.Name = "buttonUpdateTable";
+            this.buttonUpdateTable.Size = new System.Drawing.Size(116, 30);
+            this.buttonUpdateTable.TabIndex = 17;
+            this.buttonUpdateTable.Text = "Обновить";
+            this.buttonUpdateTable.UseVisualStyleBackColor = true;
+            // 
+            // cmbBoxStringOfSearch
+            // 
+            this.cmbBoxStringOfSearch.Location = new System.Drawing.Point(437, 24);
+            this.cmbBoxStringOfSearch.Name = "cmbBoxStringOfSearch";
+            this.cmbBoxStringOfSearch.Size = new System.Drawing.Size(356, 24);
+            this.cmbBoxStringOfSearch.TabIndex = 17;
+            this.cmbBoxStringOfSearch.SelectedIndexChanged += new System.EventHandler(this.cmbBoxStringOfSearch_SelectedIndexChanged);
             // 
             // PersonalFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(842, 499);
+            this.Controls.Add(this.cmbBoxStringOfSearch);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.buttonSelect);
+            this.Controls.Add(this.cmboBoxSelectSettings);
+            this.Controls.Add(this.cmboBoxSettingsOfSearch);
+            this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.listView1);
             this.Name = "PersonalFiles";
             this.Text = "Личные дела";
@@ -282,7 +296,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -300,19 +313,20 @@
         private System.Windows.Forms.ColumnHeader Position;
         private System.Windows.Forms.ColumnHeader Salary;
         private System.Windows.Forms.ColumnHeader Status;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button buttonMkNewPerson;
+        private System.Windows.Forms.Button buttonChangePersons;
+        private System.Windows.Forms.Button buttonDeletePersons;
+        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.ComboBox cmboBoxSettingsOfSearch;
+        private System.Windows.Forms.ComboBox cmboBoxSelectSettings;
+        private System.Windows.Forms.Button buttonSelect;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxParaSelectFrom;
+        private System.Windows.Forms.TextBox textBoxParaSelectTo;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button buttonUpdateTable;
+        private System.Windows.Forms.ComboBox cmbBoxStringOfSearch;
     }
 }
