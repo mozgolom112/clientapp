@@ -59,6 +59,7 @@
             this.listViewPerson = new System.Windows.Forms.ListView();
             this.checkBoxLoadFromHard = new System.Windows.Forms.CheckBox();
             this.labelLastLoadTime = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.militaryCompanyDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personalfileBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -291,7 +292,7 @@
             // checkBoxLoadFromHard
             // 
             this.checkBoxLoadFromHard.AutoSize = true;
-            this.checkBoxLoadFromHard.Location = new System.Drawing.Point(819, 16);
+            this.checkBoxLoadFromHard.Location = new System.Drawing.Point(828, 27);
             this.checkBoxLoadFromHard.Name = "checkBoxLoadFromHard";
             this.checkBoxLoadFromHard.Size = new System.Drawing.Size(165, 21);
             this.checkBoxLoadFromHard.TabIndex = 18;
@@ -302,18 +303,29 @@
             // labelLastLoadTime
             // 
             this.labelLastLoadTime.AutoSize = true;
-            this.labelLastLoadTime.Location = new System.Drawing.Point(816, 40);
+            this.labelLastLoadTime.Location = new System.Drawing.Point(860, 51);
             this.labelLastLoadTime.Name = "labelLastLoadTime";
-            this.labelLastLoadTime.Size = new System.Drawing.Size(46, 17);
+            this.labelLastLoadTime.Size = new System.Drawing.Size(125, 17);
             this.labelLastLoadTime.TabIndex = 19;
-            this.labelLastLoadTime.Text = "label3";
+            this.labelLastLoadTime.Text = "Дата обновления";
             this.labelLastLoadTime.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(769, 51);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 17);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "LastUpdate:";
+            this.label3.Click += new System.EventHandler(this.label3_Click_1);
             // 
             // PersonalFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1005, 517);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.labelLastLoadTime);
             this.Controls.Add(this.checkBoxLoadFromHard);
             this.Controls.Add(this.cmbBoxStringOfSearch);
@@ -368,5 +380,6 @@
         private System.Windows.Forms.ListView listViewPerson;
         private System.Windows.Forms.CheckBox checkBoxLoadFromHard;
         private System.Windows.Forms.Label labelLastLoadTime;
+        private System.Windows.Forms.Label label3;
     }
 }
