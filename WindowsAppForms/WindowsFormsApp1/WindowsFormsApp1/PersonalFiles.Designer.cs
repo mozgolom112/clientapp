@@ -57,6 +57,8 @@
             this.Salary = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listViewPerson = new System.Windows.Forms.ListView();
+            this.checkBoxLoadFromHard = new System.Windows.Forms.CheckBox();
+            this.labelLastLoadTime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.militaryCompanyDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personalfileBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -85,6 +87,7 @@
             this.buttonMkNewPerson.TabIndex = 1;
             this.buttonMkNewPerson.Text = "Создать";
             this.buttonMkNewPerson.UseVisualStyleBackColor = true;
+            this.buttonMkNewPerson.Click += new System.EventHandler(this.buttonMkNewPerson_Click);
             // 
             // buttonChangePersons
             // 
@@ -197,19 +200,20 @@
             this.groupBox2.Controls.Add(this.buttonChangePersons);
             this.groupBox2.Location = new System.Drawing.Point(12, 103);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(132, 275);
+            this.groupBox2.Size = new System.Drawing.Size(132, 304);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Операции";
             // 
             // buttonUpdateTable
             // 
-            this.buttonUpdateTable.Location = new System.Drawing.Point(10, 245);
+            this.buttonUpdateTable.Location = new System.Drawing.Point(10, 237);
             this.buttonUpdateTable.Name = "buttonUpdateTable";
             this.buttonUpdateTable.Size = new System.Drawing.Size(116, 30);
             this.buttonUpdateTable.TabIndex = 17;
             this.buttonUpdateTable.Text = "Обновить";
             this.buttonUpdateTable.UseVisualStyleBackColor = true;
+            this.buttonUpdateTable.Click += new System.EventHandler(this.buttonUpdateTable_Click);
             // 
             // cmbBoxStringOfSearch
             // 
@@ -226,34 +230,42 @@
             // Surname
             // 
             this.Surname.Text = "Фамилия";
+            this.Surname.Width = 89;
             // 
             // FirstName
             // 
             this.FirstName.Text = "Имя";
+            this.FirstName.Width = 88;
             // 
             // Secondname
             // 
             this.Secondname.Text = "Отчество";
+            this.Secondname.Width = 84;
             // 
             // YoB
             // 
             this.YoB.Text = "Год рождения";
+            this.YoB.Width = 109;
             // 
             // Specialize
             // 
             this.Specialize.Text = "Специальность";
+            this.Specialize.Width = 122;
             // 
             // Position
             // 
             this.Position.Text = "Должность";
+            this.Position.Width = 98;
             // 
             // Salary
             // 
             this.Salary.Text = "З/П";
+            this.Salary.Width = 74;
             // 
             // Status
             // 
             this.Status.Text = "Статус";
+            this.Status.Width = 77;
             // 
             // listViewPerson
             // 
@@ -276,11 +288,34 @@
             this.listViewPerson.View = System.Windows.Forms.View.Details;
             this.listViewPerson.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
+            // checkBoxLoadFromHard
+            // 
+            this.checkBoxLoadFromHard.AutoSize = true;
+            this.checkBoxLoadFromHard.Location = new System.Drawing.Point(819, 16);
+            this.checkBoxLoadFromHard.Name = "checkBoxLoadFromHard";
+            this.checkBoxLoadFromHard.Size = new System.Drawing.Size(165, 21);
+            this.checkBoxLoadFromHard.TabIndex = 18;
+            this.checkBoxLoadFromHard.Text = "Локальная выгрузка";
+            this.checkBoxLoadFromHard.UseVisualStyleBackColor = true;
+            this.checkBoxLoadFromHard.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // labelLastLoadTime
+            // 
+            this.labelLastLoadTime.AutoSize = true;
+            this.labelLastLoadTime.Location = new System.Drawing.Point(816, 40);
+            this.labelLastLoadTime.Name = "labelLastLoadTime";
+            this.labelLastLoadTime.Size = new System.Drawing.Size(46, 17);
+            this.labelLastLoadTime.TabIndex = 19;
+            this.labelLastLoadTime.Text = "label3";
+            this.labelLastLoadTime.Click += new System.EventHandler(this.label3_Click);
+            // 
             // PersonalFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1005, 517);
+            this.Controls.Add(this.labelLastLoadTime);
+            this.Controls.Add(this.checkBoxLoadFromHard);
             this.Controls.Add(this.cmbBoxStringOfSearch);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -298,6 +333,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -330,5 +366,7 @@
         private System.Windows.Forms.ColumnHeader Salary;
         private System.Windows.Forms.ColumnHeader Status;
         private System.Windows.Forms.ListView listViewPerson;
+        private System.Windows.Forms.CheckBox checkBoxLoadFromHard;
+        private System.Windows.Forms.Label labelLastLoadTime;
     }
 }

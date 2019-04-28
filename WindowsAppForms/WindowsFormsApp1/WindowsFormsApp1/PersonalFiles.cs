@@ -21,9 +21,38 @@ namespace WindowsFormsApp1
         private ArrayList CollectionOfStatus;
         private ArrayList CollectionOfSpec;
 
+        private DataSet DataCurrentSet;
+
+        DateTime LastUpdate;
+        
         string TypeOfSearch;
         string ValueOfSearch;
 
+        private void CheckOutFromDB(SqlConnection conn)
+        {
+            try
+            {
+                this.DataCurrentSet = new DataSet();
+                string sql = "Exec prall_about_person_info";
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+                adapter.Fill(DataCurrentSet);
+                this.LastUpdate = DateTime.Now;
+                labelLastLoadTime.Text = LastUpdate.ToString();
+            }
+            catch (Exception exp)
+            {
+                DialogResult result = MessageBox.Show("\tОшибка подключения: \n" + exp.Message +
+                    "\t\nНевозможно подключиться к БД", "Соединение с сервером", MessageBoxButtons.RetryCancel);
+                if (result == DialogResult.Retry)
+                {
+                    CheckOutFromDB(conn);
+                }
+                else
+                {
+                    return;
+                }
+            }   
+        }
         public PersonalFiles(SqlConnection current_conn)
         {
             
@@ -60,6 +89,19 @@ namespace WindowsFormsApp1
             }
             dataReader.Close();
 
+            //создание локальной версии
+            try {
+                CheckOutFromDB(connection);
+            }
+            catch(Exception exp)
+            {
+                DialogResult result = MessageBox.Show("\tОшибка подключения: \n" +exp.Message+
+                    "\t\nНевозможно подключиться к БД", "Соединение с сервером", MessageBoxButtons.RetryCancel);
+                if (result == DialogResult.Retry)
+                {
+                    
+                }
+            }
 
         }
 
@@ -165,17 +207,27 @@ namespace WindowsFormsApp1
         private void buttonSearch_Click(object sender, EventArgs e)
         {
 
-            //try { connection.Open(); } catch { return; } //проверяем еще раз коннект
+            DataSet DataSetWay;
+            DataTableReader reader;
+            ValueOfSearch = cmbBoxStringOfSearch.Text.ToString();
+
+            if (connection.State != ConnectionState.Open) { checkBoxLoadFromHard.Checked = true; }
+
+        if (!checkBoxLoadFromHard.Checked) {  //выгрузка данных
+            bool FullUpdate = false;
+    
             SqlDataAdapter adapter;
-            DataSet dataSet;
+            DataSet DataSetFromServer;
+                
             string sql;
-            listViewPerson.Items.Clear();
-            if ((cmboBoxSettingsOfSearch.SelectedIndex == 7) ||(cmbBoxStringOfSearch.Text=="")) //если выбрать все, то вызываем просто процедуру
+            
+
+            if ((cmboBoxSettingsOfSearch.SelectedIndex == 7) ||(ValueOfSearch=="")) //если выбрать все, то вызываем просто процедуру
             {
                 sql = "Exec prall_about_person_info";
+                    FullUpdate = true;
             }
             else {
-                ValueOfSearch = cmbBoxStringOfSearch.Text.ToString();
                     sql = 
                              "create table #result_of_search(ID int, " +
                              "Surname varchar(50), " +
@@ -191,22 +243,40 @@ namespace WindowsFormsApp1
                          "SELECT * FROM #result_of_search "+
                          "WHERE " + TypeOfSearch + " = " + "'" +ValueOfSearch + "'";
             }
-
+            try {
             adapter = new SqlDataAdapter(sql, connection);
-
-            dataSet = new DataSet();
-
-            adapter.Fill(dataSet);
-
-            DataTableReader reader = dataSet.CreateDataReader();
-
-            try { 
-            SqlCommand rmTable = new SqlCommand("drop table #result_of_search", connection);
-            rmTable.ExecuteNonQuery();
+            DataSetFromServer = new DataSet();
+            adapter.Fill(DataSetFromServer);
             }
-            catch { }
+            catch (Exception exp)
+            {
+                    MessageBox.Show("Ошибка чтения. Обратитесь в службу поддержки\nОшибка: " + exp.Message, "Ошибка", MessageBoxButtons.OK);
+                    return;
+            }
 
-            while (reader.Read())
+                if (FullUpdate) //обновим заодно и нашу версию
+                { DataCurrentSet = DataSetFromServer;
+                 LastUpdate = DateTime.Now;
+                 labelLastLoadTime.Text = LastUpdate.ToString();
+                } 
+
+                DataSetWay = DataSetFromServer;
+
+                reader = DataSetWay.CreateDataReader();
+
+                try
+                {
+                    SqlCommand rmTable = new SqlCommand("drop table #result_of_search", connection);
+                    rmTable.ExecuteNonQuery();
+                    //готово к выгрузке
+                    listViewPerson.Items.Clear();
+                }
+                catch
+                {
+                    //уже удалена или не была создана временная таблица
+                }
+                listViewPerson.Items.Clear();
+                while (reader.Read())
                 {
 
                     string[] lvi_string = new string[reader.FieldCount];
@@ -219,8 +289,49 @@ namespace WindowsFormsApp1
                     listViewPerson.Items.Add(lvi);
 
                 }
+            }
+            else
+            {
+                if (DataCurrentSet.IsInitialized != false) {
+                    DataSetWay = DataCurrentSet;
+                    reader = DataSetWay.CreateDataReader();
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка выгрузки данных. Попробуйте еще раз", "Ошибка", MessageBoxButtons.OK);
+                    CheckOutFromDB(connection);
+                    return;
+                }
+            
+
             
             
+            listViewPerson.Items.Clear();
+
+            int indexofsearch = cmboBoxSettingsOfSearch.SelectedIndex;
+            if (indexofsearch > 2)
+            {
+                indexofsearch++; //сместили указатель на 1
+            }
+            
+            while (reader.Read())
+                {
+                    if ((reader.GetValue(indexofsearch).ToString() == ValueOfSearch)||(indexofsearch==8)||(ValueOfSearch == ""))
+                {
+
+                    string[] lvi_string = new string[reader.FieldCount];
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        
+                        lvi_string[i] = reader.GetValue(i).ToString();
+
+                    }
+                    ListViewItem lvi = new ListViewItem(lvi_string);
+                    listViewPerson.Items.Add(lvi);
+                }
+            }
+
+            }
         }
 
         private void buttonDeletePersons_Click(object sender, EventArgs e)
@@ -278,6 +389,26 @@ namespace WindowsFormsApp1
                 transaction.Rollback();
                 return;
             }
+        }
+
+        private void buttonMkNewPerson_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonUpdateTable_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
