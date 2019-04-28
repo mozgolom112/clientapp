@@ -62,6 +62,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GoToWorkPlaceAsk.cs" />
+    <Compile Include="MakePersonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MakePersonForm.Designer.cs">
+      <DependentUpon>MakePersonForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MilitaryCompanyDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -88,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MakePersonForm.resx">
+      <DependentUpon>MakePersonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PersonalFiles.resx">
       <DependentUpon>PersonalFiles.cs</DependentUpon>

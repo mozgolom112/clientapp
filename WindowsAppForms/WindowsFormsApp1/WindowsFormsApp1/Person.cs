@@ -20,7 +20,7 @@ namespace WindowsFormsApp1
         private int Spec_key;
 
         private string Position;
-        private decimal Salary;
+        private int Salary;
         private int status_key;
 
         public string GetSurname()
@@ -28,6 +28,10 @@ namespace WindowsFormsApp1
             return Surname;
         }
 
+        public string GetFirstname()
+        {
+            return Firstname;
+        }
 
         public int GetPersonalID()
         {
@@ -66,13 +70,24 @@ namespace WindowsFormsApp1
 
         public void SetPersonalID(int ID)
         {
-            PersonalID = ID;
+            if (ID > 0) { PersonalID = ID; }
+            else {
+                throw new Exception("Ошибка! ID не может быть отрицательным");
+            }
         }
 
         public void SetSurname(string Surname)
         {
             if (Surname != "")
                 this.Surname = Surname;
+            else
+                throw new Exception("Ошибка! Это поле не должно быть пустым");
+        }
+
+        public void SetFirstname(string Firstname)
+        {
+            if (Firstname != "")
+                this.Firstname = Firstname;
             else
                 throw new Exception("Ошибка! Это поле не должно быть пустым");
         }
@@ -97,12 +112,22 @@ namespace WindowsFormsApp1
 
         public void SetSpec_key(int key)
         {
+            if (key >= 0) { 
             this.Spec_key = key;
+            }
+            else
+            {
+                throw new Exception("Ошибка! Это поле не может быть отрицательным!");
+            }
         }
 
         public void SetPosition(string Position)
         {
+            if (Position != "") { 
             this.Position = Position;
+            }
+            else
+                throw new Exception("Ошибка! Это поле не должно быть пустым");
         }
 
         public void SetSalary(int salary)
@@ -119,7 +144,14 @@ namespace WindowsFormsApp1
 
         public void SetStatus(int key)
         {
-            this.status_key = key;
+            if (key >= 0)
+            {
+                this.status_key = key;
+            }
+            else
+            {
+                throw new Exception("Ошибка! Это поле не может быть отрицательным!");
+            }     
         }
 
 

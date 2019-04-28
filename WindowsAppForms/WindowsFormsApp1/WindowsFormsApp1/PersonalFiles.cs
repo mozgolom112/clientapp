@@ -408,7 +408,8 @@ namespace WindowsFormsApp1
 
         private void buttonMkNewPerson_Click(object sender, EventArgs e)
         {
-
+            MakePersonForm form = new MakePersonForm(connection);
+            form.Show();
         }
 
         private void buttonUpdateTable_Click(object sender, EventArgs e)

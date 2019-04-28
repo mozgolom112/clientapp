@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonInsert = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.labelSurname = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
@@ -41,39 +41,41 @@
             this.labelPosition = new System.Windows.Forms.Label();
             this.labelStatus = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.labelSalary = new System.Windows.Forms.Label();
+            this.buttonCheck = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.textBoxSurname = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxSecondname = new System.Windows.Forms.TextBox();
+            this.textBoxYoB = new System.Windows.Forms.TextBox();
+            this.textBoxPosition = new System.Windows.Forms.TextBox();
+            this.textBoxID = new System.Windows.Forms.TextBox();
+            this.textBoxSalary = new System.Windows.Forms.TextBox();
+            this.comboStatus = new System.Windows.Forms.ComboBox();
+            this.comboSpec = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // buttonInsert
             // 
-            this.button1.Location = new System.Drawing.Point(596, 365);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 35);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Сохранить";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonInsert.Location = new System.Drawing.Point(618, 363);
+            this.buttonInsert.Name = "buttonInsert";
+            this.buttonInsert.Size = new System.Drawing.Size(139, 35);
+            this.buttonInsert.TabIndex = 0;
+            this.buttonInsert.Text = "Сохранить";
+            this.buttonInsert.UseVisualStyleBackColor = true;
+            this.buttonInsert.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(245, 30);
+            this.label1.Location = new System.Drawing.Point(257, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(236, 20);
             this.label1.TabIndex = 1;
@@ -118,10 +120,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.textBoxYoB);
+            this.groupBox1.Controls.Add(this.textBoxSecondname);
+            this.groupBox1.Controls.Add(this.textBoxName);
+            this.groupBox1.Controls.Add(this.textBoxSurname);
             this.groupBox1.Controls.Add(this.labelName);
             this.groupBox1.Controls.Add(this.labelYoB);
             this.groupBox1.Controls.Add(this.labelSurname);
@@ -135,10 +137,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox2);
-            this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Controls.Add(this.textBox6);
-            this.groupBox2.Controls.Add(this.textBox8);
+            this.groupBox2.Controls.Add(this.comboSpec);
+            this.groupBox2.Controls.Add(this.comboStatus);
+            this.groupBox2.Controls.Add(this.textBoxPosition);
+            this.groupBox2.Controls.Add(this.textBoxID);
             this.groupBox2.Controls.Add(this.labelStatus);
             this.groupBox2.Controls.Add(this.labelPosition);
             this.groupBox2.Controls.Add(this.labelSpecialize);
@@ -188,8 +190,8 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox9);
-            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.textBoxSalary);
+            this.groupBox3.Controls.Add(this.labelSalary);
             this.groupBox3.Location = new System.Drawing.Point(31, 298);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(357, 100);
@@ -197,23 +199,24 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Условия договора";
             // 
-            // label10
+            // labelSalary
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 36);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(135, 17);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Заработная плата:";
+            this.labelSalary.AutoSize = true;
+            this.labelSalary.Location = new System.Drawing.Point(16, 36);
+            this.labelSalary.Name = "labelSalary";
+            this.labelSalary.Size = new System.Drawing.Size(135, 17);
+            this.labelSalary.TabIndex = 0;
+            this.labelSalary.Text = "Заработная плата:";
             // 
-            // button2
+            // buttonCheck
             // 
-            this.button2.Location = new System.Drawing.Point(428, 367);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(139, 31);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Проверить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonCheck.Location = new System.Drawing.Point(422, 367);
+            this.buttonCheck.Name = "buttonCheck";
+            this.buttonCheck.Size = new System.Drawing.Size(139, 31);
+            this.buttonCheck.TabIndex = 9;
+            this.buttonCheck.Text = "Проверить";
+            this.buttonCheck.UseVisualStyleBackColor = true;
+            this.buttonCheck.Click += new System.EventHandler(this.buttonCheck_Click);
             // 
             // label11
             // 
@@ -242,95 +245,115 @@
             this.checkBox1.TabIndex = 12;
             this.checkBox1.Text = "Не согласен";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // textBox1
+            // textBoxSurname
             // 
-            this.textBox1.Location = new System.Drawing.Point(160, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(191, 22);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxSurname.Location = new System.Drawing.Point(160, 28);
+            this.textBoxSurname.Name = "textBoxSurname";
+            this.textBoxSurname.Size = new System.Drawing.Size(191, 22);
+            this.textBoxSurname.TabIndex = 6;
+            this.textBoxSurname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxSurname.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // textBoxName
             // 
-            this.textBox2.Location = new System.Drawing.Point(160, 61);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(191, 22);
-            this.textBox2.TabIndex = 7;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxName.Location = new System.Drawing.Point(160, 61);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(191, 22);
+            this.textBoxName.TabIndex = 7;
+            this.textBoxName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
             // 
-            // textBox3
+            // textBoxSecondname
             // 
-            this.textBox3.Location = new System.Drawing.Point(160, 91);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(191, 22);
-            this.textBox3.TabIndex = 8;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxSecondname.Location = new System.Drawing.Point(160, 91);
+            this.textBoxSecondname.Name = "textBoxSecondname";
+            this.textBoxSecondname.Size = new System.Drawing.Size(191, 22);
+            this.textBoxSecondname.TabIndex = 8;
+            this.textBoxSecondname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxSecondname.TextChanged += new System.EventHandler(this.textBoxSecondname_TextChanged);
             // 
-            // textBox4
+            // textBoxYoB
             // 
-            this.textBox4.Location = new System.Drawing.Point(160, 125);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(191, 22);
-            this.textBox4.TabIndex = 13;
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxYoB.Location = new System.Drawing.Point(160, 125);
+            this.textBoxYoB.Name = "textBoxYoB";
+            this.textBoxYoB.Size = new System.Drawing.Size(191, 22);
+            this.textBoxYoB.TabIndex = 13;
+            this.textBoxYoB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxYoB.TextChanged += new System.EventHandler(this.textBoxYoB_TextChanged);
             // 
-            // textBox6
+            // textBoxPosition
             // 
-            this.textBox6.Location = new System.Drawing.Point(151, 91);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(191, 22);
-            this.textBox6.TabIndex = 16;
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxPosition.Location = new System.Drawing.Point(151, 91);
+            this.textBoxPosition.Name = "textBoxPosition";
+            this.textBoxPosition.Size = new System.Drawing.Size(191, 22);
+            this.textBoxPosition.TabIndex = 16;
+            this.textBoxPosition.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxPosition.TextChanged += new System.EventHandler(this.textBoxPosition_TextChanged);
             // 
-            // textBox8
+            // textBoxID
             // 
-            this.textBox8.Location = new System.Drawing.Point(151, 25);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(191, 22);
-            this.textBox8.TabIndex = 14;
-            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxID.Location = new System.Drawing.Point(151, 25);
+            this.textBoxID.Name = "textBoxID";
+            this.textBoxID.Size = new System.Drawing.Size(191, 22);
+            this.textBoxID.TabIndex = 14;
+            this.textBoxID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxID.TextChanged += new System.EventHandler(this.textBoxID_TextChanged);
             // 
-            // textBox9
+            // textBoxSalary
             // 
-            this.textBox9.Location = new System.Drawing.Point(157, 32);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(191, 22);
-            this.textBox9.TabIndex = 18;
-            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxSalary.Location = new System.Drawing.Point(157, 32);
+            this.textBoxSalary.Name = "textBoxSalary";
+            this.textBoxSalary.Size = new System.Drawing.Size(191, 22);
+            this.textBoxSalary.TabIndex = 18;
+            this.textBoxSalary.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxSalary.TextChanged += new System.EventHandler(this.textBoxSalary_TextChanged);
             // 
-            // comboBox1
+            // comboStatus
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(151, 124);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(191, 24);
-            this.comboBox1.TabIndex = 17;
+            this.comboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboStatus.FormattingEnabled = true;
+            this.comboStatus.Location = new System.Drawing.Point(151, 124);
+            this.comboStatus.Name = "comboStatus";
+            this.comboStatus.Size = new System.Drawing.Size(191, 24);
+            this.comboStatus.TabIndex = 17;
+            this.comboStatus.SelectedIndexChanged += new System.EventHandler(this.comboStatus_SelectedIndexChanged);
             // 
-            // comboBox2
+            // comboSpec
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(151, 58);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(191, 24);
-            this.comboBox2.TabIndex = 18;
+            this.comboSpec.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboSpec.FormattingEnabled = true;
+            this.comboSpec.Location = new System.Drawing.Point(151, 58);
+            this.comboSpec.Name = "comboSpec";
+            this.comboSpec.Size = new System.Drawing.Size(191, 24);
+            this.comboSpec.TabIndex = 18;
+            this.comboSpec.SelectedIndexChanged += new System.EventHandler(this.comboSpec_SelectedIndexChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(31, 406);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(110, 32);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Очистить";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // MakePersonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonCheck);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonInsert);
             this.Name = "MakePersonForm";
             this.Text = "Добавление сотрудника";
             this.Load += new System.EventHandler(this.MakePersonForm_Load);
@@ -347,7 +370,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonInsert;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelSurname;
         private System.Windows.Forms.Label labelName;
@@ -360,19 +383,20 @@
         private System.Windows.Forms.Label labelSpecialize;
         private System.Windows.Forms.Label labelPersonalID;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label labelSalary;
+        private System.Windows.Forms.Button buttonCheck;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBoxYoB;
+        private System.Windows.Forms.TextBox textBoxSecondname;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox textBoxSurname;
+        private System.Windows.Forms.ComboBox comboSpec;
+        private System.Windows.Forms.ComboBox comboStatus;
+        private System.Windows.Forms.TextBox textBoxPosition;
+        private System.Windows.Forms.TextBox textBoxID;
+        private System.Windows.Forms.TextBox textBoxSalary;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
