@@ -28,6 +28,8 @@ namespace WindowsFormsApp1
         string TypeOfSearch;
         string ValueOfSearch;
 
+        string TypeOfSelect;
+
         private void CheckOutFromDB(SqlConnection conn)
         {
             try
@@ -70,6 +72,10 @@ namespace WindowsFormsApp1
                                                                 "Год рождения","Специальность","Должность",
                                                                 "Статус","Выбрать всех" });
             cmboBoxSettingsOfSearch.SelectedIndex = 7;
+
+            cmboBoxSelectSettings.Items.AddRange(new string[] { "ID", "Год рождения", "Зарплата" });
+
+            cmboBoxSelectSettings.SelectedIndex = 0;
 
             SqlDataReader dataReader;
 
@@ -423,6 +429,77 @@ namespace WindowsFormsApp1
         private void label3_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonSelect_Click(object sender, EventArgs e)
+        {
+            if (textBoxParaSelectFrom.Text == "" || textBoxParaSelectTo.Text == "")
+            {
+                MessageBox.Show("Выберете диапазон", "Выборка", MessageBoxButtons.OK);
+                return;
+            }
+
+
+            int indexofselect=0;
+
+            Int32 rangeFrom = Int32.Parse(textBoxParaSelectFrom.Text);
+            Int32 rangeTo = Int32.Parse(textBoxParaSelectTo.Text);
+
+            if (rangeFrom > rangeTo)
+            {
+                MessageBox.Show("Выберете диапазон правильно\nЛевое значение должно быть меньше правого", "Выборка", MessageBoxButtons.OK);
+                return;
+            }
+
+            switch (cmboBoxSelectSettings.SelectedIndex)
+            {
+                case 0: { indexofselect = 0; break; }
+                case 1: { indexofselect = 4; break; }
+                case 2: { indexofselect = 7; break; }
+            }
+
+
+            foreach(ListViewItem item in listViewPerson.Items)
+            {
+                
+                Int32 value = Int32.Parse(item.SubItems[indexofselect].Text);
+                if (value >= rangeFrom && value <= rangeTo) { }
+                else
+                {
+                    item.Remove();
+                }
+            }
+            
+
+        }
+
+        private void cmboBoxSelectSettings_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBoxParaSelectFrom.Clear();
+            textBoxParaSelectTo.Clear();
+
+            textBoxParaSelectFrom.Focus();
+        }
+
+        private void buttonCancelSelect_Click(object sender, EventArgs e)
+        {
+            buttonSearch.PerformClick();
+        }
+
+        private void buttonCheckedAll_Click(object sender, EventArgs e)
+        {
+            foreach(ListViewItem item in listViewPerson.Items)
+            {
+                item.Checked = true;
+            }
+        }
+
+        private void buttonCleanCheck_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in listViewPerson.CheckedItems)
+            {
+                item.Checked = false;
+            }
         }
     }
 }

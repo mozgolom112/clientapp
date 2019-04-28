@@ -60,10 +60,15 @@
             this.checkBoxLoadFromHard = new System.Windows.Forms.CheckBox();
             this.labelLastLoadTime = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.buttonCancelSelect = new System.Windows.Forms.Button();
+            this.buttonCheckedAll = new System.Windows.Forms.Button();
+            this.buttonCleanCheck = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.militaryCompanyDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personalfileBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // militaryCompanyDataSet
@@ -111,7 +116,7 @@
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(150, 16);
+            this.buttonSearch.Location = new System.Drawing.Point(150, 17);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(96, 31);
             this.buttonSearch.TabIndex = 4;
@@ -131,11 +136,13 @@
             // 
             // cmboBoxSelectSettings
             // 
+            this.cmboBoxSelectSettings.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboBoxSelectSettings.FormattingEnabled = true;
             this.cmboBoxSelectSettings.Location = new System.Drawing.Point(263, 434);
             this.cmboBoxSelectSettings.Name = "cmboBoxSelectSettings";
             this.cmboBoxSelectSettings.Size = new System.Drawing.Size(157, 24);
             this.cmboBoxSelectSettings.TabIndex = 8;
+            this.cmboBoxSelectSettings.SelectedIndexChanged += new System.EventHandler(this.cmboBoxSelectSettings_SelectedIndexChanged);
             // 
             // buttonSelect
             // 
@@ -145,6 +152,7 @@
             this.buttonSelect.TabIndex = 9;
             this.buttonSelect.Text = "Выборка";
             this.buttonSelect.UseVisualStyleBackColor = true;
+            this.buttonSelect.Click += new System.EventHandler(this.buttonSelect_Click);
             // 
             // label1
             // 
@@ -186,9 +194,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBoxParaSelectFrom);
-            this.groupBox1.Location = new System.Drawing.Point(467, 413);
+            this.groupBox1.Location = new System.Drawing.Point(462, 413);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(326, 79);
+            this.groupBox1.Size = new System.Drawing.Size(331, 96);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Введите диапазон";
@@ -218,9 +226,9 @@
             // 
             // cmbBoxStringOfSearch
             // 
-            this.cmbBoxStringOfSearch.Location = new System.Drawing.Point(437, 21);
+            this.cmbBoxStringOfSearch.Location = new System.Drawing.Point(426, 23);
             this.cmbBoxStringOfSearch.Name = "cmbBoxStringOfSearch";
-            this.cmbBoxStringOfSearch.Size = new System.Drawing.Size(356, 24);
+            this.cmbBoxStringOfSearch.Size = new System.Drawing.Size(375, 24);
             this.cmbBoxStringOfSearch.TabIndex = 17;
             this.cmbBoxStringOfSearch.SelectedIndexChanged += new System.EventHandler(this.cmbBoxStringOfSearch_SelectedIndexChanged);
             // 
@@ -283,7 +291,7 @@
             this.Status});
             this.listViewPerson.Location = new System.Drawing.Point(150, 71);
             this.listViewPerson.Name = "listViewPerson";
-            this.listViewPerson.Size = new System.Drawing.Size(843, 336);
+            this.listViewPerson.Size = new System.Drawing.Size(888, 336);
             this.listViewPerson.TabIndex = 0;
             this.listViewPerson.UseCompatibleStateImageBehavior = false;
             this.listViewPerson.View = System.Windows.Forms.View.Details;
@@ -292,7 +300,7 @@
             // checkBoxLoadFromHard
             // 
             this.checkBoxLoadFromHard.AutoSize = true;
-            this.checkBoxLoadFromHard.Location = new System.Drawing.Point(828, 27);
+            this.checkBoxLoadFromHard.Location = new System.Drawing.Point(873, 26);
             this.checkBoxLoadFromHard.Name = "checkBoxLoadFromHard";
             this.checkBoxLoadFromHard.Size = new System.Drawing.Size(165, 21);
             this.checkBoxLoadFromHard.TabIndex = 18;
@@ -303,7 +311,7 @@
             // labelLastLoadTime
             // 
             this.labelLastLoadTime.AutoSize = true;
-            this.labelLastLoadTime.Location = new System.Drawing.Point(860, 51);
+            this.labelLastLoadTime.Location = new System.Drawing.Point(905, 50);
             this.labelLastLoadTime.Name = "labelLastLoadTime";
             this.labelLastLoadTime.Size = new System.Drawing.Size(125, 17);
             this.labelLastLoadTime.TabIndex = 19;
@@ -313,18 +321,61 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(769, 51);
+            this.label3.Location = new System.Drawing.Point(814, 50);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 17);
             this.label3.TabIndex = 20;
             this.label3.Text = "LastUpdate:";
             this.label3.Click += new System.EventHandler(this.label3_Click_1);
             // 
+            // buttonCancelSelect
+            // 
+            this.buttonCancelSelect.Location = new System.Drawing.Point(150, 475);
+            this.buttonCancelSelect.Name = "buttonCancelSelect";
+            this.buttonCancelSelect.Size = new System.Drawing.Size(96, 34);
+            this.buttonCancelSelect.TabIndex = 21;
+            this.buttonCancelSelect.Text = "Отмена";
+            this.buttonCancelSelect.UseVisualStyleBackColor = true;
+            this.buttonCancelSelect.Click += new System.EventHandler(this.buttonCancelSelect_Click);
+            // 
+            // buttonCheckedAll
+            // 
+            this.buttonCheckedAll.Location = new System.Drawing.Point(17, 21);
+            this.buttonCheckedAll.Name = "buttonCheckedAll";
+            this.buttonCheckedAll.Size = new System.Drawing.Size(129, 28);
+            this.buttonCheckedAll.TabIndex = 22;
+            this.buttonCheckedAll.Text = "Выбрать все";
+            this.buttonCheckedAll.UseVisualStyleBackColor = true;
+            this.buttonCheckedAll.Click += new System.EventHandler(this.buttonCheckedAll_Click);
+            // 
+            // buttonCleanCheck
+            // 
+            this.buttonCleanCheck.Location = new System.Drawing.Point(17, 65);
+            this.buttonCleanCheck.Name = "buttonCleanCheck";
+            this.buttonCleanCheck.Size = new System.Drawing.Size(129, 28);
+            this.buttonCleanCheck.TabIndex = 23;
+            this.buttonCleanCheck.Text = "Очистить выбор";
+            this.buttonCleanCheck.UseVisualStyleBackColor = true;
+            this.buttonCleanCheck.Click += new System.EventHandler(this.buttonCleanCheck_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.buttonCheckedAll);
+            this.groupBox3.Controls.Add(this.buttonCleanCheck);
+            this.groupBox3.Location = new System.Drawing.Point(849, 413);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(162, 96);
+            this.groupBox3.TabIndex = 24;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Выделение";
+            // 
             // PersonalFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1005, 517);
+            this.ClientSize = new System.Drawing.Size(1060, 517);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.buttonCancelSelect);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.labelLastLoadTime);
             this.Controls.Add(this.checkBoxLoadFromHard);
@@ -344,6 +395,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -381,5 +433,9 @@
         private System.Windows.Forms.CheckBox checkBoxLoadFromHard;
         private System.Windows.Forms.Label labelLastLoadTime;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button buttonCancelSelect;
+        private System.Windows.Forms.Button buttonCheckedAll;
+        private System.Windows.Forms.Button buttonCleanCheck;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }
