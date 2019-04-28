@@ -94,6 +94,43 @@ namespace WindowsFormsApp1
                    MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
+                    SqlTransaction transaction = connection.BeginTransaction();
+                    SqlCommand command = NewPerson.MkInsert();
+                    command.Connection = connection;
+                    command.Transaction = transaction;
+                    
+                    //SqlCommand command = NewPerson.MkInsert();
+                    //command.connection.CreateCommand();
+                    //command.Connection.CreateCommand();
+                    //command.Transaction = transaction;
+                    try
+                    {
+                        //SqlCommand command = NewPerson.MkInsert();
+                        command.ExecuteNonQuery();
+
+                        transaction.Commit();
+
+                        DialogResult resultfinish = MessageBox.Show("Данные успешно вставленны.\nХотите создать еще?", "Успех", MessageBoxButtons.YesNo);
+                        if (resultfinish == DialogResult.Yes)
+                        {
+                            buttonClearAll.PerformClick();
+                            return;
+                        }
+                        else
+                        {
+                            this.Dispose();
+                            this.Close();
+                        }
+                    }
+                    catch(Exception exp)
+                    {
+
+                        MessageBox.Show("Вставка не была успешна. Ошибка: \n" 
+                            + exp.Message, 
+                            "Ошибка", MessageBoxButtons.OK);
+                        transaction.Rollback();
+                    }
+                    
 
                 }
                 else { return; }
@@ -209,8 +246,17 @@ namespace WindowsFormsApp1
 
         private void comboSpec_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int key = comboSpec.SelectedIndex;
+            if (comboSpec.SelectedIndex >= 1)
+            {
+                key += 2;
+            }
+            else
+            {
+                key++;
+            }
             try { 
-                NewPerson.SetSpec_key(comboSpec.SelectedIndex);
+                NewPerson.SetSpec_key(key);
                 labelSpecialize.BackColor = Color.Green;
                 Check[5] = true;
             }
@@ -243,7 +289,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                NewPerson.SetStatus(comboStatus.SelectedIndex);
+                NewPerson.SetStatus(comboStatus.SelectedIndex+1);
                 labelStatus.BackColor = Color.Green;
                 Check[7] = true;
             }

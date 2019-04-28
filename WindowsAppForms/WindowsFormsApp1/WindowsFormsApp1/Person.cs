@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
+using System.Data.SqlClient;
 
 namespace WindowsFormsApp1
 {
@@ -23,6 +24,57 @@ namespace WindowsFormsApp1
         private int Salary;
         private int status_key;
 
+        public SqlCommand MkInsert()
+        {
+            string sqlExpression = "exec prAddPersonInfo " +
+                                     "@ID_person, " +
+
+                                     "@Group, " +
+                                     "@Spec, " +
+                                     "@Position, " +
+                                     "@Salary, " +
+
+                                     "@Surname, " +
+                                     "@Firstname, " +
+                                     "@Secondname, " +
+
+                                     "@Status, " +
+                                     "@year ";
+            SqlCommand command = new SqlCommand(sqlExpression);
+
+            SqlParameter ID_person = new SqlParameter("@ID_person", GetPersonalID());
+            command.Parameters.Add(ID_person);
+
+            SqlParameter Group = new SqlParameter("@Group", 1);
+            command.Parameters.Add(Group);
+
+            SqlParameter Spec = new SqlParameter("@Spec", GetSpecKey());
+            command.Parameters.Add(Spec);
+
+            SqlParameter Position = new SqlParameter("@Position", GetPosition());
+            command.Parameters.Add(Position);
+
+            SqlParameter Salary = new SqlParameter("@Salary", GetSalary());
+            command.Parameters.Add(Salary);
+
+            SqlParameter Surname = new SqlParameter("@Surname", GetSurname());
+            command.Parameters.Add(Surname);
+
+            SqlParameter Firstname = new SqlParameter("@Firstname", GetFirstname());
+            command.Parameters.Add(Firstname);
+
+            SqlParameter Secondname = new SqlParameter("@Secondname", GetSecondname());
+            command.Parameters.Add(Secondname);
+
+            SqlParameter Status = new SqlParameter("@Status", GetStatusKey());
+            command.Parameters.Add(Status);
+
+            SqlParameter year = new SqlParameter("@year", GetYear());
+            command.Parameters.Add(year);
+
+            return command;
+        }
+
         public string GetSurname()
         {
             return Surname;
@@ -38,7 +90,7 @@ namespace WindowsFormsApp1
             return PersonalID;
         }
 
-        public string GetSecondname(string Secondname)
+        public string GetSecondname()
         {
            return this.Secondname;
         }
