@@ -32,16 +32,6 @@
             this.militaryCompanyDataSet = new WindowsFormsApp1.MilitaryCompanyDataSet();
             this.personalfileBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.personal_fileTableAdapter = new WindowsFormsApp1.MilitaryCompanyDataSetTableAdapters.personal_fileTableAdapter();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Surname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.FirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Secondname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.YoB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Specialize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Position = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Salary = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonMkNewPerson = new System.Windows.Forms.Button();
             this.buttonChangePersons = new System.Windows.Forms.Button();
             this.buttonDeletePersons = new System.Windows.Forms.Button();
@@ -57,6 +47,16 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonUpdateTable = new System.Windows.Forms.Button();
             this.cmbBoxStringOfSearch = new System.Windows.Forms.ComboBox();
+            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Surname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.FirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Secondname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.YoB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Specialize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Position = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Salary = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewPerson = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.militaryCompanyDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personalfileBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -76,63 +76,6 @@
             // personal_fileTableAdapter
             // 
             this.personal_fileTableAdapter.ClearBeforeFill = true;
-            // 
-            // listView1
-            // 
-            this.listView1.CheckBoxes = true;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ID,
-            this.Surname,
-            this.FirstName,
-            this.Secondname,
-            this.YoB,
-            this.Specialize,
-            this.Position,
-            this.Salary,
-            this.Status});
-            this.listView1.Location = new System.Drawing.Point(150, 71);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(643, 336);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
-            // 
-            // ID
-            // 
-            this.ID.Text = "ID";
-            // 
-            // Surname
-            // 
-            this.Surname.Text = "Фамилия";
-            // 
-            // FirstName
-            // 
-            this.FirstName.Text = "Имя";
-            // 
-            // Secondname
-            // 
-            this.Secondname.Text = "Отчество";
-            // 
-            // YoB
-            // 
-            this.YoB.Text = "Год рождения";
-            // 
-            // Specialize
-            // 
-            this.Specialize.Text = "Специальность";
-            // 
-            // Position
-            // 
-            this.Position.Text = "Должность";
-            // 
-            // Salary
-            // 
-            this.Salary.Text = "З/П";
-            // 
-            // Status
-            // 
-            this.Status.Text = "Статус";
             // 
             // buttonMkNewPerson
             // 
@@ -163,18 +106,19 @@
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(150, 19);
+            this.buttonSearch.Location = new System.Drawing.Point(150, 16);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(96, 31);
             this.buttonSearch.TabIndex = 4;
             this.buttonSearch.Text = "Поиск";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // cmboBoxSettingsOfSearch
             // 
             this.cmboBoxSettingsOfSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboBoxSettingsOfSearch.FormattingEnabled = true;
-            this.cmboBoxSettingsOfSearch.Location = new System.Drawing.Point(263, 26);
+            this.cmboBoxSettingsOfSearch.Location = new System.Drawing.Point(263, 23);
             this.cmboBoxSettingsOfSearch.Name = "cmboBoxSettingsOfSearch";
             this.cmboBoxSettingsOfSearch.Size = new System.Drawing.Size(157, 24);
             this.cmboBoxSettingsOfSearch.TabIndex = 6;
@@ -250,7 +194,7 @@
             this.groupBox2.Controls.Add(this.buttonDeletePersons);
             this.groupBox2.Controls.Add(this.buttonMkNewPerson);
             this.groupBox2.Controls.Add(this.buttonChangePersons);
-            this.groupBox2.Location = new System.Drawing.Point(12, 132);
+            this.groupBox2.Location = new System.Drawing.Point(12, 103);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(132, 275);
             this.groupBox2.TabIndex = 16;
@@ -268,11 +212,68 @@
             // 
             // cmbBoxStringOfSearch
             // 
-            this.cmbBoxStringOfSearch.Location = new System.Drawing.Point(437, 24);
+            this.cmbBoxStringOfSearch.Location = new System.Drawing.Point(437, 21);
             this.cmbBoxStringOfSearch.Name = "cmbBoxStringOfSearch";
             this.cmbBoxStringOfSearch.Size = new System.Drawing.Size(356, 24);
             this.cmbBoxStringOfSearch.TabIndex = 17;
             this.cmbBoxStringOfSearch.SelectedIndexChanged += new System.EventHandler(this.cmbBoxStringOfSearch_SelectedIndexChanged);
+            // 
+            // ID
+            // 
+            this.ID.Text = "ID";
+            // 
+            // Surname
+            // 
+            this.Surname.Text = "Фамилия";
+            // 
+            // FirstName
+            // 
+            this.FirstName.Text = "Имя";
+            // 
+            // Secondname
+            // 
+            this.Secondname.Text = "Отчество";
+            // 
+            // YoB
+            // 
+            this.YoB.Text = "Год рождения";
+            // 
+            // Specialize
+            // 
+            this.Specialize.Text = "Специальность";
+            // 
+            // Position
+            // 
+            this.Position.Text = "Должность";
+            // 
+            // Salary
+            // 
+            this.Salary.Text = "З/П";
+            // 
+            // Status
+            // 
+            this.Status.Text = "Статус";
+            // 
+            // listViewPerson
+            // 
+            this.listViewPerson.CheckBoxes = true;
+            this.listViewPerson.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ID,
+            this.Surname,
+            this.FirstName,
+            this.Secondname,
+            this.YoB,
+            this.Specialize,
+            this.Position,
+            this.Salary,
+            this.Status});
+            this.listViewPerson.Location = new System.Drawing.Point(150, 71);
+            this.listViewPerson.Name = "listViewPerson";
+            this.listViewPerson.Size = new System.Drawing.Size(643, 336);
+            this.listViewPerson.TabIndex = 0;
+            this.listViewPerson.UseCompatibleStateImageBehavior = false;
+            this.listViewPerson.View = System.Windows.Forms.View.Details;
+            this.listViewPerson.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // PersonalFiles
             // 
@@ -286,7 +287,7 @@
             this.Controls.Add(this.cmboBoxSelectSettings);
             this.Controls.Add(this.cmboBoxSettingsOfSearch);
             this.Controls.Add(this.buttonSearch);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.listViewPerson);
             this.Name = "PersonalFiles";
             this.Text = "Личные дела";
             this.Load += new System.EventHandler(this.PersonalFiles_Load);
@@ -303,16 +304,6 @@
         private MilitaryCompanyDataSet militaryCompanyDataSet;
         private System.Windows.Forms.BindingSource personalfileBindingSource;
         private MilitaryCompanyDataSetTableAdapters.personal_fileTableAdapter personal_fileTableAdapter;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader ID;
-        private System.Windows.Forms.ColumnHeader Surname;
-        private System.Windows.Forms.ColumnHeader FirstName;
-        private System.Windows.Forms.ColumnHeader Secondname;
-        private System.Windows.Forms.ColumnHeader YoB;
-        private System.Windows.Forms.ColumnHeader Specialize;
-        private System.Windows.Forms.ColumnHeader Position;
-        private System.Windows.Forms.ColumnHeader Salary;
-        private System.Windows.Forms.ColumnHeader Status;
         private System.Windows.Forms.Button buttonMkNewPerson;
         private System.Windows.Forms.Button buttonChangePersons;
         private System.Windows.Forms.Button buttonDeletePersons;
@@ -328,5 +319,15 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button buttonUpdateTable;
         private System.Windows.Forms.ComboBox cmbBoxStringOfSearch;
+        private System.Windows.Forms.ColumnHeader ID;
+        private System.Windows.Forms.ColumnHeader Surname;
+        private System.Windows.Forms.ColumnHeader FirstName;
+        private System.Windows.Forms.ColumnHeader Secondname;
+        private System.Windows.Forms.ColumnHeader YoB;
+        private System.Windows.Forms.ColumnHeader Specialize;
+        private System.Windows.Forms.ColumnHeader Position;
+        private System.Windows.Forms.ColumnHeader Salary;
+        private System.Windows.Forms.ColumnHeader Status;
+        private System.Windows.Forms.ListView listViewPerson;
     }
 }

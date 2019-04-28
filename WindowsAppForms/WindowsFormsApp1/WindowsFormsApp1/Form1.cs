@@ -49,8 +49,18 @@ namespace WindowsFormsApp1
             catch (Exception excpt)
             {
             }
-
-            SqlCommand cmdSelectAll = new SqlCommand("SELECT * FROM crew", conn);
+            string sql =
+                             "create table #result_of_search(ID int, " +
+                             "Surname varchar(50), " +
+                             "Firstname varchar(50), " +
+                             "SecondName varchar(50), " +
+                             "YoB int, Spec varchar(100), " +
+                             "Pos varchar(50),Salary int, " +
+                             "Stat varchar(50)) " +
+                         "insert #result_of_search " +
+                         "exec prall_about_person_info " +
+                         "SELECT * FROM #result_of_search ";
+            SqlCommand cmdSelectAll = new SqlCommand(sql, conn);
 
             using (SqlDataReader dr = cmdSelectAll.ExecuteReader(CommandBehavior.CloseConnection))
             {

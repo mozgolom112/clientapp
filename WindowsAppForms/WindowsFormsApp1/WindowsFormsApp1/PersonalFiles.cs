@@ -18,9 +18,11 @@ namespace WindowsFormsApp1
 
         private SqlConnection connection;
 
-        ArrayList CollectionOfStatus = new ArrayList();
-        ArrayList CollectionOfSpec = new ArrayList();
+        private ArrayList CollectionOfStatus;
+        private ArrayList CollectionOfSpec;
 
+        string TypeOfSearch;
+        string ValueOfSearch;
 
         public PersonalFiles(SqlConnection current_conn)
         {
@@ -28,6 +30,12 @@ namespace WindowsFormsApp1
             InitializeComponent();
 
             this.connection = current_conn;
+
+            CollectionOfStatus = new ArrayList();
+            CollectionOfSpec = new ArrayList();
+
+            TypeOfSearch = "";
+            ValueOfSearch = "";
 
             cmboBoxSettingsOfSearch.Items.AddRange(new string[] { "ID", "Фамилия" ,"Имя" ,
                                                                 "Год рождения","Специальность","Должность",
@@ -84,28 +92,31 @@ namespace WindowsFormsApp1
             switch (cmboBoxSettingsOfSearch.SelectedIndex){               
                 case 0: //ID
                     {
-                        cmbBoxStringOfSearch.Text = "";
-                        cmbBoxStringOfSearch.Focus();
+                        TypeOfSearch = "ID";
                         cmbBoxStringOfSearch.DropDownStyle = ComboBoxStyle.Simple;
                         break;
                     }
                 case 1: //Фамилия
                     {
+                        TypeOfSearch = "Surname";
                         cmbBoxStringOfSearch.DropDownStyle = ComboBoxStyle.Simple;
                         break;
                     }
                 case 2: //Имя
                     {
+                        TypeOfSearch = "Firstname";
                         cmbBoxStringOfSearch.DropDownStyle = ComboBoxStyle.Simple;
                         break;
                     }
                 case 3: //Год рождения
                     {
+                        TypeOfSearch = "yearofbirthday";
                         cmbBoxStringOfSearch.DropDownStyle = ComboBoxStyle.Simple;
                         break;
                     }
                 case 4: //Специальность
                     {
+                        TypeOfSearch = "Specialize";
 
                         cmbBoxStringOfSearch.DropDownStyle = ComboBoxStyle.DropDownList;
                         cmbBoxStringOfSearch.Items.Clear();
@@ -115,12 +126,15 @@ namespace WindowsFormsApp1
                     }
                 case 5: //Должнось
                     {
+                        TypeOfSearch = "Position";
 
                         cmbBoxStringOfSearch.DropDownStyle = ComboBoxStyle.Simple;
                         break;
                     }
                 case 6: //Статус
                     {
+                        TypeOfSearch = "Status";
+
                         cmbBoxStringOfSearch.DropDownStyle = ComboBoxStyle.DropDownList;
                         cmbBoxStringOfSearch.Items.Clear();
                         cmbBoxStringOfSearch.Items.AddRange(CollectionOfStatus.ToArray());
@@ -128,6 +142,7 @@ namespace WindowsFormsApp1
                     }
                 case 7: //Выбрать всех
                     {
+                        TypeOfSearch = "*";
 
                         cmbBoxStringOfSearch.Enabled = false;
                         break;
@@ -145,6 +160,61 @@ namespace WindowsFormsApp1
         private void cmbBoxStringOfSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+
+            //try { connection.Open(); } catch { return; } //проверяем еще раз коннект
+            Console.WriteLine(ValueOfSearch);
+            SqlDataAdapter adapter;
+            DataSet dataSet;
+            string sql = 
+                             "create table #result_of_search(ID int, " +
+                             "Surname varchar(50), " +
+                             "Firstname varchar(50), " +
+                             "SecondName varchar(50), " +
+                             "YoB int, Spec varchar(100), " +
+                             "Pos varchar(50),Salary int, " +
+                             "Stat varchar(50)) " +
+                         "insert #result_of_search " +
+                         "exec prall_about_person_info " +
+                         "SELECT * FROM #result_of_search ";
+
+            if ((cmboBoxSettingsOfSearch.SelectedIndex == 7) ||(cmbBoxStringOfSearch.Text=="")) //если выбрать все, то вызываем просто процедуру
+            {
+                sql = "Exec prall_about_person_info";
+            }
+            else {
+                        sql += "WHERE "+ TypeOfSearch + " = " + ValueOfSearch;
+            }
+
+            adapter = new SqlDataAdapter(sql, connection);
+
+            dataSet = new DataSet();
+
+            adapter.Fill(dataSet);
+
+            DataTableReader reader = dataSet.CreateDataReader();
+
+           // SqlCommand sqlCom = new SqlCommand(sql, connection);
+            //SqlDataReader reader = sqlCom.ExecuteReader(CommandBehavior.CloseConnection))
+
+                while (reader.Read())
+                {
+
+                    string[] lvi_string = new string[reader.FieldCount];
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        lvi_string[i] = reader.GetValue(i).ToString();
+
+                    }
+                    ListViewItem lvi = new ListViewItem(lvi_string);
+                    listViewPerson.Items.Add(lvi);
+
+                }
+            
+            
         }
     }
 }

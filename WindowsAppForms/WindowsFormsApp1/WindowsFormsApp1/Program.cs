@@ -58,10 +58,11 @@ namespace WindowsFormsApp1
             WinForAuthorisation winForAuthorisation = new WinForAuthorisation();
             winForAuthorisation.Show();
 
-         
+            Form1 form = new Form1();
+            form.Show();
 
-            //PersonalFiles personalFiles = new PersonalFiles();
-           // personalFiles.Show();
+            PersonalFiles personalFiles = new PersonalFiles(conn);
+           personalFiles.Show();
 
             Application.Run();
             

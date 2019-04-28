@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
             string database = "MilitaryCompany";
             string username = "SuperClient";
             string password = "123";
-            return DBSQLServerUtils.GetDBConnection(datasource, database);//, username, password);
+            return DBSQLServerUtils.GetDBConnection(datasource, database,username,password);//, username, password);
         }
     }
 }
