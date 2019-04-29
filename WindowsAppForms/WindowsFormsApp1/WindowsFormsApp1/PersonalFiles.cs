@@ -68,6 +68,8 @@ namespace WindowsFormsApp1
             TypeOfSearch = "";
             ValueOfSearch = "";
 
+           // SqlDataReader r = DataCurrentSet.Tables.Add CreateDataReader();
+
             cmboBoxSettingsOfSearch.Items.AddRange(new string[] { "ID", "Фамилия" ,"Имя" ,
                                                                 "Год рождения","Специальность","Должность",
                                                                 "Статус","Выбрать всех" });
@@ -389,11 +391,11 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    
+                    transaction.Rollback();
                     return;
                 }
                 
-
+                D
             }
             catch(Exception excp)
             {

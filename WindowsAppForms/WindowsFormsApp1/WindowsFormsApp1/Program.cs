@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
         [STAThread]
         static void Main()
         {
-
+            /*
             SqlConnection conn = DBUtils.GetDBConnection();
             try
             {
@@ -26,7 +26,7 @@ namespace WindowsFormsApp1
             {
                 Console.WriteLine(e.Message);
             }
-            /*
+            
              * //Нужны права для пользоватля, чтобы вызывать имена БД
              * //Так что пока так добавлю и все
             SqlCommand cmdDbname = new SqlCommand("MilitaryCompany.sys.sp_databases", conn);
@@ -42,7 +42,7 @@ namespace WindowsFormsApp1
                     }
                 }
             }
-            */
+            
             // Вывод информации о подключении
             Console.WriteLine("Свойства подключения:");
             Console.WriteLine("\tСтрока подключения: {0}", conn.ConnectionString);
@@ -55,14 +55,15 @@ namespace WindowsFormsApp1
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            */
             WinForAuthorisation winForAuthorisation = new WinForAuthorisation();
             winForAuthorisation.Show();
 
-            Form1 form = new Form1();
-            form.Show();
+            //Form1 form = new Form1();
+            //form.Show();
 
-            PersonalFiles personalFiles = new PersonalFiles(conn);
-           personalFiles.Show();
+            //PersonalFiles personalFiles = new PersonalFiles(conn);
+            //personalFiles.Show();
 
             Application.Run();
             
