@@ -502,5 +502,20 @@ namespace WindowsFormsApp1
                 item.Checked = false;
             }
         }
+
+        private void buttonChangePersons_Click(object sender, EventArgs e)
+        {
+            
+            ListView.CheckedListViewItemCollection list_for_edit = listViewPerson.CheckedItems;
+            if (list_for_edit.Count == 0)
+            {
+                MessageBox.Show("Выберите элементы для изменения", "Редактирование", MessageBoxButtons.OK);
+                return;
+            }
+            else { 
+            EditPersonForm FormEdit = new EditPersonForm(list_for_edit, connection);
+            FormEdit.Show();
+            }
+        }
     }
 }

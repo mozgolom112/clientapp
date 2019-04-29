@@ -247,7 +247,7 @@ namespace WindowsFormsApp1
         private void comboSpec_SelectedIndexChanged(object sender, EventArgs e)
         {
             int key = comboSpec.SelectedIndex;
-            if (comboSpec.SelectedIndex >= 1)
+            if (comboSpec.SelectedIndex > 1)
             {
                 key += 2;
             }
@@ -287,9 +287,11 @@ namespace WindowsFormsApp1
 
         private void comboStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int value = comboStatus.SelectedIndex + 1;
+
             try
             {
-                NewPerson.SetStatus(comboStatus.SelectedIndex+1);
+                NewPerson.SetStatus(value);
                 labelStatus.BackColor = Color.Green;
                 Check[7] = true;
             }

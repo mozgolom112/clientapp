@@ -103,6 +103,7 @@
             this.buttonChangePersons.TabIndex = 2;
             this.buttonChangePersons.Text = "Изменить";
             this.buttonChangePersons.UseVisualStyleBackColor = true;
+            this.buttonChangePersons.Click += new System.EventHandler(this.buttonChangePersons_Click);
             // 
             // buttonDeletePersons
             // 

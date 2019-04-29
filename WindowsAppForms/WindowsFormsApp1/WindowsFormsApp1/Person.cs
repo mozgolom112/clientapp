@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
 using System.Data.SqlClient;
+using System.Windows.Forms;
+using System.Collections;
 
 namespace WindowsFormsApp1
 {
@@ -23,6 +25,66 @@ namespace WindowsFormsApp1
         private string Position;
         private int Salary;
         private int status_key;
+
+        public Person() { }
+
+        public Person(ListViewItem collection, ArrayList SpecKey, ArrayList StatusKey)
+        {
+            SetPersonalID(Int32.Parse(collection.SubItems[0].Text));
+            
+            Surname = collection.SubItems[1].Text;
+            Firstname = collection.SubItems[2].Text;
+            Secondname = collection.SubItems[3].Text;
+
+            year = Int32.Parse(collection.SubItems[4].Text);
+
+            Spec_key = SpecKey.IndexOf(collection.SubItems[5].Text);
+            if(Spec_key>1)
+            {
+                Spec_key += 2;
+            }
+            else
+            {
+                Spec_key++;
+            }
+
+            Position = collection.SubItems[6].Text;
+
+            Salary = Int32.Parse(collection.SubItems[7].Text);
+
+            status_key = StatusKey.IndexOf(collection.SubItems[8].Text) + 1;
+            
+
+        }
+
+        public SqlCommand MkUpdate(bool[] changes)
+        {
+            string sqlExpression = "";
+            bool updateCrew = false;
+            for(int i = 1; i <= 4; i++)
+            {
+                if (i == 4) { i = 7; }
+                if (changes[i]) {
+                    if (updateCrew)
+                    {
+                        sqlExpression = "Update crew Set ";
+                    }
+                    string add = "";
+                    switch (i)
+                    {
+                        case 1: { add = " Surname = " + GetSurname(); break; }
+                        case 2: { add = " Firstname = " + GetFirstname(); break; }
+                        case 3: { add = " Secondname = " + GetSecondname(); break; }
+                        case 7: { add = " Status = " + GetStatusKey().ToString(); break; }
+                    }
+                    sqlExpression += add;
+                }
+            }
+
+            
+
+        }
+
 
         public SqlCommand MkInsert()
         {

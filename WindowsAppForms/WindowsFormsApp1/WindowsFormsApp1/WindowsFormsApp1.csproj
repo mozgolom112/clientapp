@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="DBSQLServerUtils.cs" />
     <Compile Include="DBUtils.cs" />
+    <Compile Include="EditPersonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditPersonForm.Designer.cs">
+      <DependentUpon>EditPersonForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ErrandInfoMessage.cs" />
     <Compile Include="ForKadrovOtdel.cs">
       <SubType>Form</SubType>
@@ -89,6 +95,9 @@
     <Compile Include="WinForAuthorisation.Designer.cs">
       <DependentUpon>WinForAuthorisation.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EditPersonForm.resx">
+      <DependentUpon>EditPersonForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ForKadrovOtdel.resx">
       <DependentUpon>ForKadrovOtdel.cs</DependentUpon>
     </EmbeddedResource>
