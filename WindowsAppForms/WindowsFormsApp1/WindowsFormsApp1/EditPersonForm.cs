@@ -153,7 +153,8 @@ namespace WindowsFormsApp1
             //labelPersonalID.BackColor = Color.Green;
 
             comboSpec.SelectedIndexChanged-= comboSpec_SelectedIndexChanged;
-            if (person.GetSpecKey() >= 4)
+            if (person.GetSpecKey() >= 6) { comboSpec.SelectedIndex = person.GetSpecKey() - 2; }
+                if (person.GetSpecKey() >= 4)
             {
                 comboSpec.SelectedIndex = person.GetSpecKey() - 2;
             }
@@ -161,6 +162,7 @@ namespace WindowsFormsApp1
             {
                 comboSpec.SelectedIndex = person.GetSpecKey() - 1;
             }
+
             comboSpec.SelectedIndexChanged += comboSpec_SelectedIndexChanged;
 
             //labelSpecialize.BackColor = Color.Green;
@@ -209,6 +211,7 @@ namespace WindowsFormsApp1
             {
                 checkBox1.Text = "Не согласен";
                 Changes[checkedListEdit.SelectedIndex, 9] = false;
+                //Modified[checkedListEdit.SelectedIndex] = false;
             }
         }
 
@@ -220,6 +223,7 @@ namespace WindowsFormsApp1
                 labelSurname.BackColor = Color.Yellow;
                 Changes[checkedListEdit.SelectedIndex, 0] = true;
                 NewChanges[checkedListEdit.SelectedIndex, 0] = true;
+                Modified[checkedListEdit.SelectedIndex] = false;
             }
             catch (Exception exp)
             {
@@ -227,6 +231,7 @@ namespace WindowsFormsApp1
                 labelSurname.BackColor = Color.Red;
                 Changes[checkedListEdit.SelectedIndex, 0] = false;
                 NewChanges[checkedListEdit.SelectedIndex, 0] = true;
+                Modified[checkedListEdit.SelectedIndex] = false;
             }
         }
 
@@ -238,7 +243,7 @@ namespace WindowsFormsApp1
                 labelName.BackColor = Color.Yellow;
                 Changes[checkedListEdit.SelectedIndex, 1] = true;
                 NewChanges[checkedListEdit.SelectedIndex, 1] = true;
-
+                Modified[checkedListEdit.SelectedIndex] = false;
             }
             catch (Exception exp)
             {
@@ -246,7 +251,7 @@ namespace WindowsFormsApp1
                 labelName.BackColor = Color.Red;
                 Changes[checkedListEdit.SelectedIndex, 1] = false;
                 NewChanges[checkedListEdit.SelectedIndex, 1] = true;
-
+                Modified[checkedListEdit.SelectedIndex] = false;
             }
         }
 
@@ -256,6 +261,7 @@ namespace WindowsFormsApp1
             labelSecondName.BackColor = Color.Yellow;
             Changes[checkedListEdit.SelectedIndex, 2] = true;
             NewChanges[checkedListEdit.SelectedIndex, 2] = true;
+            Modified[checkedListEdit.SelectedIndex] = false;
         }
 
         private void textBoxYoB_TextChanged(object sender, EventArgs e)
@@ -269,6 +275,7 @@ namespace WindowsFormsApp1
                 labelYoB.BackColor = Color.Yellow;
                 Changes[checkedListEdit.SelectedIndex, 3] = true;
                 NewChanges[checkedListEdit.SelectedIndex, 3] = true;
+                Modified[checkedListEdit.SelectedIndex] = false;
             }
             catch (Exception exp)
             {
@@ -276,6 +283,7 @@ namespace WindowsFormsApp1
                 labelYoB.BackColor = Color.Red;
                 Changes[checkedListEdit.SelectedIndex, 3] = false;
                 NewChanges[checkedListEdit.SelectedIndex, 3] = true;
+                Modified[checkedListEdit.SelectedIndex] = false;
             }
         }
 
@@ -313,7 +321,7 @@ namespace WindowsFormsApp1
         }
 
         private void comboSpec_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {   //Косяк базы! Костыль
             int key = comboSpec.SelectedIndex;
             if (comboSpec.SelectedIndex > 1)
             {
@@ -323,12 +331,17 @@ namespace WindowsFormsApp1
             {
                 key++;
             }
+            if (comboSpec.SelectedIndex > 4)
+            {
+                key++;
+            }
             try
             {
                 NewPerson[checkedListEdit.SelectedIndex].SetSpec_key(key);
                 labelSpecialize.BackColor = Color.Yellow;
                 Changes[checkedListEdit.SelectedIndex, 5] = true;
                 NewChanges[checkedListEdit.SelectedIndex, 5] = true;
+                Modified[checkedListEdit.SelectedIndex] = false;
             }
             catch (Exception exp)
             {
@@ -336,6 +349,7 @@ namespace WindowsFormsApp1
                 labelSpecialize.BackColor = Color.Red;
                 Changes[checkedListEdit.SelectedIndex, 5] = false;
                 NewChanges[checkedListEdit.SelectedIndex, 5] = true;
+                Modified[checkedListEdit.SelectedIndex] = false;
             }
 
         }
@@ -348,6 +362,7 @@ namespace WindowsFormsApp1
                 labelPosition.BackColor = Color.Yellow;
                 Changes[checkedListEdit.SelectedIndex, 6] = true;
                 NewChanges[checkedListEdit.SelectedIndex, 6] = true;
+                Modified[checkedListEdit.SelectedIndex] = false;
             }
             catch (Exception exp)
             {
@@ -355,6 +370,7 @@ namespace WindowsFormsApp1
                 labelPosition.BackColor = Color.Red;
                 Changes[checkedListEdit.SelectedIndex, 6] = false;
                 NewChanges[checkedListEdit.SelectedIndex, 6] = true;
+                Modified[checkedListEdit.SelectedIndex] = false;
             }
         }
 
@@ -368,6 +384,7 @@ namespace WindowsFormsApp1
                 labelStatus.BackColor = Color.Yellow;
                 Changes[checkedListEdit.SelectedIndex, 7] = true;
                 NewChanges[checkedListEdit.SelectedIndex, 7] = true;
+                Modified[checkedListEdit.SelectedIndex] = false;
             }
             catch (Exception exp)
             {
@@ -375,6 +392,7 @@ namespace WindowsFormsApp1
                 labelStatus.BackColor = Color.Red;
                 Changes[checkedListEdit.SelectedIndex, 7] = false;
                 NewChanges[checkedListEdit.SelectedIndex, 7] = true;
+                Modified[checkedListEdit.SelectedIndex] = false;
             }
         }
 
@@ -385,6 +403,7 @@ namespace WindowsFormsApp1
             if (!numbers || value < 0) {
                 Changes[checkedListEdit.SelectedIndex, 8] = false;
                 NewChanges[checkedListEdit.SelectedIndex, 8] = true;
+                Modified[checkedListEdit.SelectedIndex] = false;
                 return; }
             try
             {
@@ -392,6 +411,7 @@ namespace WindowsFormsApp1
                 labelSalary.BackColor = Color.Yellow;
                 Changes[checkedListEdit.SelectedIndex, 8] = true;
                 NewChanges[checkedListEdit.SelectedIndex, 8] = true;
+                Modified[checkedListEdit.SelectedIndex] = false;
             }
             catch (Exception exp)
             {
@@ -399,6 +419,7 @@ namespace WindowsFormsApp1
                 labelSalary.BackColor = Color.Red;
                 Changes[checkedListEdit.SelectedIndex, 8] = false;
                 NewChanges[checkedListEdit.SelectedIndex, 8] = true;
+                Modified[checkedListEdit.SelectedIndex] = false;
             }
         }
 
@@ -410,6 +431,7 @@ namespace WindowsFormsApp1
                 if (Changes[checkedListEdit.SelectedIndex, i] == false)
                 {
                     ReadyToUpdate[checkedListEdit.SelectedIndex] = false;
+                    Modified[checkedListEdit.SelectedIndex] = false;
                 }
             }
             if (ReadyToUpdate[checkedListEdit.SelectedIndex])
@@ -425,7 +447,24 @@ namespace WindowsFormsApp1
 
         private void buttonInsert_Click(object sender, EventArgs e)
         {
+            ReadyToUpdate[checkedListEdit.SelectedIndex] = true;
+            for (int i = 0; i < 10; i++)
+            {
+                if (Changes[checkedListEdit.SelectedIndex, i] == false)
+                {
+                    ReadyToUpdate[checkedListEdit.SelectedIndex] = false;
+                }
+            }
+            if (ReadyToUpdate[checkedListEdit.SelectedIndex])
+            {
+                Modified[checkedListEdit.SelectedIndex] = true;
+                MessageBox.Show("Данные готовы для обновления", "Проверка", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("Данные не заполненны или имеют ошибки", "Проверка", MessageBoxButtons.OK);
 
+            }
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -458,6 +497,59 @@ namespace WindowsFormsApp1
                 InsertValue(ListModifyPerson[checkedListEdit.SelectedIndex]);
 
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string textErr = "";
+            bool AllOk = true;
+            DialogResult result = MessageBox.Show("Вы уверены что хотите обновить данные" +
+                "\nСтарые данные будут утеряны?",
+                   "Проверка",
+                   MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                for(int i = 0; i < Modified.Length; i++)
+                {
+                    if (Modified[i]) {
+
+                        bool[] NC = new bool[10];
+                        for(int j = 0; j < 10; j++)
+                        {
+                            NC[j] = NewChanges[i, j];
+                        }
+
+                        SqlTransaction transaction = connection.BeginTransaction();
+                        SqlCommand command = NewPerson[i].MkUpdate(NC);
+                    command.Connection = connection;
+                    command.Transaction = transaction;
+
+
+                    try { 
+                        command.ExecuteNonQuery();
+                        transaction.Commit();
+                        
+                    }
+                    catch (Exception exp)
+                    {
+                        AllOk = false;
+                        textErr += "\n Номер дела:" + NewPerson[i].GetPersonalID() + " - "+exp.Message;
+                        transaction.Rollback();
+                    }
+
+                        }
+                }
+                if (AllOk)
+                {
+                    MessageBox.Show("Все транзакции прошли успешно. Данные обновленны", "Успех", MessageBoxButtons.OK);
+
+                }
+                else
+                {
+                    MessageBox.Show("Не все транзакции прошли успешно. Ошибки: " + textErr, "Ошибка", MessageBoxButtons.OK);
+                }
+            }
+            else { return; }
         }
     }
 }

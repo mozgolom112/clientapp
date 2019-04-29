@@ -255,6 +255,10 @@ namespace WindowsFormsApp1
             {
                 key++;
             }
+            if (comboSpec.SelectedIndex > 4)
+            {
+                key++;
+            }
             try { 
                 NewPerson.SetSpec_key(key);
                 labelSpecialize.BackColor = Color.Green;

@@ -39,7 +39,7 @@ namespace WindowsFormsApp1
             year = Int32.Parse(collection.SubItems[4].Text);
 
             Spec_key = SpecKey.IndexOf(collection.SubItems[5].Text);
-            if(Spec_key>1)
+            if(SpecKey.IndexOf(collection.SubItems[5].Text) > 1)
             {
                 Spec_key += 2;
             }
@@ -47,7 +47,10 @@ namespace WindowsFormsApp1
             {
                 Spec_key++;
             }
-
+            if (SpecKey.IndexOf(collection.SubItems[5].Text) > 4)
+            {
+                Spec_key++;
+            }
             Position = collection.SubItems[6].Text;
 
             Salary = Int32.Parse(collection.SubItems[7].Text);
@@ -60,29 +63,70 @@ namespace WindowsFormsApp1
         public SqlCommand MkUpdate(bool[] changes)
         {
             string sqlExpression = "";
-            bool updateCrew = false;
-            for(int i = 1; i <= 4; i++)
+            bool updateCrew = true;
+            bool addseparator = false;
+            for (int i = 0; i <= 3; i++)
             {
-                if (i == 4) { i = 7; }
-                if (changes[i]) {
-                    if (updateCrew)
+                if (i == 3) { i = 7; }
+                if (changes[i])
+                {
+                    if (updateCrew && true)
                     {
-                        sqlExpression = "Update crew Set ";
+                        sqlExpression = "Update crew Set "; updateCrew = false;
                     }
+
                     string add = "";
+                    if (addseparator) { add += " , "; }
                     switch (i)
                     {
-                        case 1: { add = " Surname = " + GetSurname(); break; }
-                        case 2: { add = " Firstname = " + GetFirstname(); break; }
-                        case 3: { add = " Secondname = " + GetSecondname(); break; }
-                        case 7: { add = " Status = " + GetStatusKey().ToString(); break; }
+                        case 0: { add += " Surname = '" + GetSurname() + "' "; break; }
+                        case 1: { add += " Firstname = '" + GetFirstname() + "' "; break; }
+                        case 2: { add += " Secondname = '" + GetSecondname() + "' "; break; }
+                        case 7: { add += " Status = " + GetStatusKey().ToString(); break; }
                     }
+                    addseparator = true;
                     sqlExpression += add;
-                }
+                }               
+            }
+            if (!updateCrew)
+            {
+                sqlExpression += " Where ID = " + GetPersonalID(); ;
             }
 
+            addseparator = false;
+            bool updateperson_file = true;
+                for (int i = 5; i < 9; i++)
+                {
+                    if (i == 7) { continue; }
+                    if (changes[i])
+                    {
+                        if (updateperson_file && true)
+                        {
+                            sqlExpression += " Update personal_file Set "; updateperson_file = false;
+                        }
+                        string add = "";
+                    if (addseparator)
+                    {
+                        add += " , ";
+                    }
+                    switch (i)
+                        {
+                            case 5: { add += " Specialize = " + GetSpecKey().ToString(); break; }
+                            case 6: { add += " Position = '" + GetPosition().ToString() + "' "; break; }
+                           // case 7: { break; }
+                            case 8: { add += " Salary = " + GetSalary(); break; }
+                        }
+                        addseparator = true;
+                        sqlExpression += add;
+                    }
+                }
+                if (!updateperson_file)
+                {
+                    sqlExpression += " Where ID = " + GetPersonalID(); 
+                }
             
-
+            SqlCommand command = new SqlCommand(sqlExpression);
+            return command;
         }
 
 
