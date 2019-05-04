@@ -62,6 +62,75 @@ namespace WindowsFormsApp1
 
         }
 
+        private void InsertValue(Person person)
+        {
+            textBoxSurname.TextChanged -= textBox1_TextChanged;
+            textBoxSurname.Text = person.GetSurname();
+            textBoxSurname.TextChanged += textBox1_TextChanged;
+
+            labelSurname.BackColor = Color.Aqua;
+
+            textBoxName.TextChanged -= textBoxName_TextChanged;
+            textBoxName.Text = person.GetFirstname();
+            textBoxName.TextChanged += textBoxName_TextChanged;
+            labelName.BackColor = Color.Aqua;
+
+            textBoxSecondname.TextChanged -= textBoxSecondname_TextChanged;
+            textBoxSecondname.Text = person.GetSecondname();
+            textBoxSecondname.TextChanged += textBoxSecondname_TextChanged;
+
+            labelSecondName.BackColor = Color.Aqua;
+
+            textBoxYoB.TextChanged -= textBoxYoB_TextChanged;
+            textBoxYoB.Text = person.GetYear().ToString();
+            textBoxYoB.TextChanged += textBoxYoB_TextChanged;
+
+            labelYoB.BackColor = Color.Aqua;
+
+            textBoxID.TextChanged -= textBoxID_TextChanged;
+            textBoxID.Text = person.GetPersonalID().ToString();
+            textBoxID.TextChanged += textBoxID_TextChanged;
+
+            labelPersonalID.BackColor = Color.Aqua;
+
+            comboSpec.SelectedIndexChanged -= comboSpec_SelectedIndexChanged;
+            if (person.GetSpecKey() >= 6) { comboSpec.SelectedIndex = person.GetSpecKey() - 2; }
+            if (person.GetSpecKey() >= 4)
+            {
+                comboSpec.SelectedIndex = person.GetSpecKey() - 2;
+            }
+            else
+            {
+                comboSpec.SelectedIndex = person.GetSpecKey() - 1;
+            }
+
+            comboSpec.SelectedIndexChanged += comboSpec_SelectedIndexChanged;
+
+            labelSpecialize.BackColor = Color.Aqua;
+
+            textBoxPosition.TextChanged -= textBoxPosition_TextChanged;
+            textBoxPosition.Text = person.GetPosition();
+            textBoxPosition.TextChanged += textBoxPosition_TextChanged;
+
+            labelPosition.BackColor = Color.Aqua;
+
+            comboStatus.SelectedIndexChanged -= comboStatus_SelectedIndexChanged;
+            comboStatus.SelectedIndex = person.GetStatusKey() - 1;
+            comboStatus.SelectedIndexChanged += comboStatus_SelectedIndexChanged;
+
+            labelStatus.BackColor = Color.Aqua;
+
+            textBoxSalary.TextChanged -= textBoxSalary_TextChanged;
+            textBoxSalary.Text = person.GetSalary().ToString();
+            textBoxSalary.TextChanged += textBoxSalary_TextChanged;
+
+            labelSalary.BackColor = Color.Aqua;
+
+            checkBox1.Checked = false;
+            //labelAftograf.BackColor = Color.Aqua;
+
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -345,6 +414,12 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Данные не заполненны или имеют ошибки", "Проверка", MessageBoxButtons.OK);
 
             }
+        }
+
+        private void buttonClearAll_Click(object sender, EventArgs e)
+        {
+            Person empty = new Person();
+            InsertValue(empty);
         }
     }
 }

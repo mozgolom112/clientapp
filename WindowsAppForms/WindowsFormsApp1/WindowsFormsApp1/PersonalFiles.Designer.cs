@@ -255,27 +255,27 @@
             // YoB
             // 
             this.YoB.Text = "Год рождения";
-            this.YoB.Width = 109;
+            this.YoB.Width = 120;
             // 
             // Specialize
             // 
             this.Specialize.Text = "Специальность";
-            this.Specialize.Width = 122;
+            this.Specialize.Width = 145;
             // 
             // Position
             // 
             this.Position.Text = "Должность";
-            this.Position.Width = 98;
+            this.Position.Width = 125;
             // 
             // Salary
             // 
             this.Salary.Text = "З/П";
-            this.Salary.Width = 74;
+            this.Salary.Width = 95;
             // 
             // Status
             // 
             this.Status.Text = "Статус";
-            this.Status.Width = 77;
+            this.Status.Width = 92;
             // 
             // listViewPerson
             // 
@@ -292,7 +292,7 @@
             this.Status});
             this.listViewPerson.Location = new System.Drawing.Point(150, 71);
             this.listViewPerson.Name = "listViewPerson";
-            this.listViewPerson.Size = new System.Drawing.Size(888, 336);
+            this.listViewPerson.Size = new System.Drawing.Size(952, 336);
             this.listViewPerson.TabIndex = 0;
             this.listViewPerson.UseCompatibleStateImageBehavior = false;
             this.listViewPerson.View = System.Windows.Forms.View.Details;
@@ -343,7 +343,7 @@
             // 
             this.buttonCheckedAll.Location = new System.Drawing.Point(17, 21);
             this.buttonCheckedAll.Name = "buttonCheckedAll";
-            this.buttonCheckedAll.Size = new System.Drawing.Size(129, 28);
+            this.buttonCheckedAll.Size = new System.Drawing.Size(158, 28);
             this.buttonCheckedAll.TabIndex = 22;
             this.buttonCheckedAll.Text = "Выбрать все";
             this.buttonCheckedAll.UseVisualStyleBackColor = true;
@@ -353,7 +353,7 @@
             // 
             this.buttonCleanCheck.Location = new System.Drawing.Point(17, 65);
             this.buttonCleanCheck.Name = "buttonCleanCheck";
-            this.buttonCleanCheck.Size = new System.Drawing.Size(129, 28);
+            this.buttonCleanCheck.Size = new System.Drawing.Size(158, 28);
             this.buttonCleanCheck.TabIndex = 23;
             this.buttonCleanCheck.Text = "Очистить выбор";
             this.buttonCleanCheck.UseVisualStyleBackColor = true;
@@ -363,9 +363,9 @@
             // 
             this.groupBox3.Controls.Add(this.buttonCheckedAll);
             this.groupBox3.Controls.Add(this.buttonCleanCheck);
-            this.groupBox3.Location = new System.Drawing.Point(849, 413);
+            this.groupBox3.Location = new System.Drawing.Point(873, 413);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(162, 96);
+            this.groupBox3.Size = new System.Drawing.Size(193, 96);
             this.groupBox3.TabIndex = 24;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Выделение";
@@ -374,7 +374,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1060, 517);
+            this.ClientSize = new System.Drawing.Size(1143, 517);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.buttonCancelSelect);
             this.Controls.Add(this.label3);

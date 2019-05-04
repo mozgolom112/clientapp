@@ -83,7 +83,7 @@ namespace WindowsFormsApp1
 
             for (int i = 0; i < ListForEdit.Count; i++)
             {
-                checkedListEdit.Items.Add(ListForEdit[i].SubItems[0].Text + " "
+                checkedListEdit12.Items.Add(ListForEdit[i].SubItems[0].Text + " "
                     + ListForEdit[i].SubItems[1].Text);
                 ListModifyPerson[i] = new Person(ListForEdit[i], CollectionOfSpec, CollectionOfStatus);
                 NewPerson[i] = new Person(ListForEdit[i], CollectionOfSpec, CollectionOfStatus);
@@ -94,7 +94,7 @@ namespace WindowsFormsApp1
             comboStatus.Items.AddRange(CollectionOfStatus.ToArray());
 
 
-            checkedListEdit.SelectedIndex = 0;
+            checkedListEdit12.SelectedIndex = 0;
 
 
 
@@ -205,12 +205,12 @@ namespace WindowsFormsApp1
             if (checkBox1.Checked == true)
             {
                 checkBox1.Text = "Согласен";
-                Changes[checkedListEdit.SelectedIndex, 9] = true;
+                Changes[checkedListEdit12.SelectedIndex, 9] = true;
             }
             else
             {
                 checkBox1.Text = "Не согласен";
-                Changes[checkedListEdit.SelectedIndex, 9] = false;
+                Changes[checkedListEdit12.SelectedIndex, 9] = false;
                 //Modified[checkedListEdit.SelectedIndex] = false;
             }
         }
@@ -219,19 +219,19 @@ namespace WindowsFormsApp1
         {
             try
             {
-                NewPerson[checkedListEdit.SelectedIndex].SetSurname(textBoxSurname.Text);
+                NewPerson[checkedListEdit12.SelectedIndex].SetSurname(textBoxSurname.Text);
                 labelSurname.BackColor = Color.Yellow;
-                Changes[checkedListEdit.SelectedIndex, 0] = true;
-                NewChanges[checkedListEdit.SelectedIndex, 0] = true;
-                Modified[checkedListEdit.SelectedIndex] = false;
+                Changes[checkedListEdit12.SelectedIndex, 0] = true;
+                NewChanges[checkedListEdit12.SelectedIndex, 0] = true;
+                Modified[checkedListEdit12.SelectedIndex] = false;
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Ошибка ввода", MessageBoxButtons.OK);
                 labelSurname.BackColor = Color.Red;
-                Changes[checkedListEdit.SelectedIndex, 0] = false;
-                NewChanges[checkedListEdit.SelectedIndex, 0] = true;
-                Modified[checkedListEdit.SelectedIndex] = false;
+                Changes[checkedListEdit12.SelectedIndex, 0] = false;
+                NewChanges[checkedListEdit12.SelectedIndex, 0] = true;
+                Modified[checkedListEdit12.SelectedIndex] = false;
             }
         }
 
@@ -239,51 +239,62 @@ namespace WindowsFormsApp1
         {
             try
             {
-                NewPerson[checkedListEdit.SelectedIndex].SetFirstname(textBoxName.Text);
+                NewPerson[checkedListEdit12.SelectedIndex].SetFirstname(textBoxName.Text);
                 labelName.BackColor = Color.Yellow;
-                Changes[checkedListEdit.SelectedIndex, 1] = true;
-                NewChanges[checkedListEdit.SelectedIndex, 1] = true;
-                Modified[checkedListEdit.SelectedIndex] = false;
+                Changes[checkedListEdit12.SelectedIndex, 1] = true;
+                NewChanges[checkedListEdit12.SelectedIndex, 1] = true;
+                Modified[checkedListEdit12.SelectedIndex] = false;
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Ошибка ввода", MessageBoxButtons.OK);
                 labelName.BackColor = Color.Red;
-                Changes[checkedListEdit.SelectedIndex, 1] = false;
-                NewChanges[checkedListEdit.SelectedIndex, 1] = true;
-                Modified[checkedListEdit.SelectedIndex] = false;
+                Changes[checkedListEdit12.SelectedIndex, 1] = false;
+                NewChanges[checkedListEdit12.SelectedIndex, 1] = true;
+                Modified[checkedListEdit12.SelectedIndex] = false;
             }
         }
 
         private void textBoxSecondname_TextChanged(object sender, EventArgs e)
         {
-            NewPerson[checkedListEdit.SelectedIndex].SetSecondname(textBoxSecondname.Text);
+            NewPerson[checkedListEdit12.SelectedIndex].SetSecondname(textBoxSecondname.Text);
             labelSecondName.BackColor = Color.Yellow;
-            Changes[checkedListEdit.SelectedIndex, 2] = true;
-            NewChanges[checkedListEdit.SelectedIndex, 2] = true;
-            Modified[checkedListEdit.SelectedIndex] = false;
+            Changes[checkedListEdit12.SelectedIndex, 2] = true;
+            NewChanges[checkedListEdit12.SelectedIndex, 2] = true;
+            Modified[checkedListEdit12.SelectedIndex] = false;
         }
 
         private void textBoxYoB_TextChanged(object sender, EventArgs e)
         {
             Int32 value;
-            bool numbers = Int32.TryParse(textBoxYoB.Text, out value);
-            if (!numbers || value < 1700) { Changes[checkedListEdit.SelectedIndex, 3] = false; return; }
+            bool numbers = Int32.TryParse(textBoxYoB.Text, out value);             
+            if (numbers && value < 0) {
+                MessageBox.Show("Дата не может быть отрицательная", "Ошибка ввода", MessageBoxButtons.OK);
+                labelYoB.BackColor = Color.Red;
+            }
+            if (value < 1700) { return; }
+            if (!numbers || value < 1700)
+            { Changes[checkedListEdit12.SelectedIndex, 3] = false;
+                NewChanges[checkedListEdit12.SelectedIndex, 3] = true;
+                Modified[checkedListEdit12.SelectedIndex] = false;
+                labelYoB.BackColor = Color.Red;
+                MessageBox.Show("Дата не может быть отрицательная или быть текстом", "Ошибка ввода", MessageBoxButtons.OK);
+                return; }
             try
             {
-                NewPerson[checkedListEdit.SelectedIndex].Setyear(value);
+                NewPerson[checkedListEdit12.SelectedIndex].Setyear(value);
                 labelYoB.BackColor = Color.Yellow;
-                Changes[checkedListEdit.SelectedIndex, 3] = true;
-                NewChanges[checkedListEdit.SelectedIndex, 3] = true;
-                Modified[checkedListEdit.SelectedIndex] = false;
+                Changes[checkedListEdit12.SelectedIndex, 3] = true;
+                NewChanges[checkedListEdit12.SelectedIndex, 3] = true;
+                Modified[checkedListEdit12.SelectedIndex] = false;
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Ошибка ввода", MessageBoxButtons.OK);
                 labelYoB.BackColor = Color.Red;
-                Changes[checkedListEdit.SelectedIndex, 3] = false;
-                NewChanges[checkedListEdit.SelectedIndex, 3] = true;
-                Modified[checkedListEdit.SelectedIndex] = false;
+                Changes[checkedListEdit12.SelectedIndex, 3] = false;
+                NewChanges[checkedListEdit12.SelectedIndex, 3] = true;
+                Modified[checkedListEdit12.SelectedIndex] = false;
             }
         }
 
@@ -337,19 +348,19 @@ namespace WindowsFormsApp1
             }
             try
             {
-                NewPerson[checkedListEdit.SelectedIndex].SetSpec_key(key);
+                NewPerson[checkedListEdit12.SelectedIndex].SetSpec_key(key);
                 labelSpecialize.BackColor = Color.Yellow;
-                Changes[checkedListEdit.SelectedIndex, 5] = true;
-                NewChanges[checkedListEdit.SelectedIndex, 5] = true;
-                Modified[checkedListEdit.SelectedIndex] = false;
+                Changes[checkedListEdit12.SelectedIndex, 5] = true;
+                NewChanges[checkedListEdit12.SelectedIndex, 5] = true;
+                Modified[checkedListEdit12.SelectedIndex] = false;
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Ошибка ввода", MessageBoxButtons.OK);
                 labelSpecialize.BackColor = Color.Red;
-                Changes[checkedListEdit.SelectedIndex, 5] = false;
-                NewChanges[checkedListEdit.SelectedIndex, 5] = true;
-                Modified[checkedListEdit.SelectedIndex] = false;
+                Changes[checkedListEdit12.SelectedIndex, 5] = false;
+                NewChanges[checkedListEdit12.SelectedIndex, 5] = true;
+                Modified[checkedListEdit12.SelectedIndex] = false;
             }
 
         }
@@ -358,19 +369,19 @@ namespace WindowsFormsApp1
         {
             try
             {
-                NewPerson[checkedListEdit.SelectedIndex].SetPosition(textBoxPosition.Text);
+                NewPerson[checkedListEdit12.SelectedIndex].SetPosition(textBoxPosition.Text);
                 labelPosition.BackColor = Color.Yellow;
-                Changes[checkedListEdit.SelectedIndex, 6] = true;
-                NewChanges[checkedListEdit.SelectedIndex, 6] = true;
-                Modified[checkedListEdit.SelectedIndex] = false;
+                Changes[checkedListEdit12.SelectedIndex, 6] = true;
+                NewChanges[checkedListEdit12.SelectedIndex, 6] = true;
+                Modified[checkedListEdit12.SelectedIndex] = false;
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Ошибка ввода", MessageBoxButtons.OK);
                 labelPosition.BackColor = Color.Red;
-                Changes[checkedListEdit.SelectedIndex, 6] = false;
-                NewChanges[checkedListEdit.SelectedIndex, 6] = true;
-                Modified[checkedListEdit.SelectedIndex] = false;
+                Changes[checkedListEdit12.SelectedIndex, 6] = false;
+                NewChanges[checkedListEdit12.SelectedIndex, 6] = true;
+                Modified[checkedListEdit12.SelectedIndex] = false;
             }
         }
 
@@ -380,19 +391,19 @@ namespace WindowsFormsApp1
 
             try
             {
-                NewPerson[checkedListEdit.SelectedIndex].SetStatus(value);
+                NewPerson[checkedListEdit12.SelectedIndex].SetStatus(value);
                 labelStatus.BackColor = Color.Yellow;
-                Changes[checkedListEdit.SelectedIndex, 7] = true;
-                NewChanges[checkedListEdit.SelectedIndex, 7] = true;
-                Modified[checkedListEdit.SelectedIndex] = false;
+                Changes[checkedListEdit12.SelectedIndex, 7] = true;
+                NewChanges[checkedListEdit12.SelectedIndex, 7] = true;
+                Modified[checkedListEdit12.SelectedIndex] = false;
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Ошибка ввода", MessageBoxButtons.OK);
                 labelStatus.BackColor = Color.Red;
-                Changes[checkedListEdit.SelectedIndex, 7] = false;
-                NewChanges[checkedListEdit.SelectedIndex, 7] = true;
-                Modified[checkedListEdit.SelectedIndex] = false;
+                Changes[checkedListEdit12.SelectedIndex, 7] = false;
+                NewChanges[checkedListEdit12.SelectedIndex, 7] = true;
+                Modified[checkedListEdit12.SelectedIndex] = false;
             }
         }
 
@@ -401,40 +412,42 @@ namespace WindowsFormsApp1
             Int32 value;
             bool numbers = Int32.TryParse(textBoxSalary.Text, out value);
             if (!numbers || value < 0) {
-                Changes[checkedListEdit.SelectedIndex, 8] = false;
-                NewChanges[checkedListEdit.SelectedIndex, 8] = true;
-                Modified[checkedListEdit.SelectedIndex] = false;
+                Changes[checkedListEdit12.SelectedIndex, 8] = false;
+                NewChanges[checkedListEdit12.SelectedIndex, 8] = true;
+                Modified[checkedListEdit12.SelectedIndex] = false;
+                labelSalary.BackColor = Color.Red;
+                MessageBox.Show("Зарплата не может быть отрицательная или быть текстом", "Ошибка ввода", MessageBoxButtons.OK);           
                 return; }
             try
             {
-                NewPerson[checkedListEdit.SelectedIndex].SetSalary(value);
+                NewPerson[checkedListEdit12.SelectedIndex].SetSalary(value);
                 labelSalary.BackColor = Color.Yellow;
-                Changes[checkedListEdit.SelectedIndex, 8] = true;
-                NewChanges[checkedListEdit.SelectedIndex, 8] = true;
-                Modified[checkedListEdit.SelectedIndex] = false;
+                Changes[checkedListEdit12.SelectedIndex, 8] = true;
+                NewChanges[checkedListEdit12.SelectedIndex, 8] = true;
+                Modified[checkedListEdit12.SelectedIndex] = false;
             }
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Ошибка ввода", MessageBoxButtons.OK);
                 labelSalary.BackColor = Color.Red;
-                Changes[checkedListEdit.SelectedIndex, 8] = false;
-                NewChanges[checkedListEdit.SelectedIndex, 8] = true;
-                Modified[checkedListEdit.SelectedIndex] = false;
+                Changes[checkedListEdit12.SelectedIndex, 8] = false;
+                NewChanges[checkedListEdit12.SelectedIndex, 8] = true;
+                Modified[checkedListEdit12.SelectedIndex] = false;
             }
         }
 
         private void buttonCheck_Click(object sender, EventArgs e)
         {
-            ReadyToUpdate[checkedListEdit.SelectedIndex] = true;
+            ReadyToUpdate[checkedListEdit12.SelectedIndex] = true;
             for (int i = 0; i < 10; i++)
             {
-                if (Changes[checkedListEdit.SelectedIndex, i] == false)
+                if (Changes[checkedListEdit12.SelectedIndex, i] == false)
                 {
-                    ReadyToUpdate[checkedListEdit.SelectedIndex] = false;
-                    Modified[checkedListEdit.SelectedIndex] = false;
+                    ReadyToUpdate[checkedListEdit12.SelectedIndex] = false;
+                    Modified[checkedListEdit12.SelectedIndex] = false;
                 }
             }
-            if (ReadyToUpdate[checkedListEdit.SelectedIndex])
+            if (ReadyToUpdate[checkedListEdit12.SelectedIndex])
             {
                 MessageBox.Show("Данные готовы для обновления", "Проверка", MessageBoxButtons.OK);
             }
@@ -447,17 +460,17 @@ namespace WindowsFormsApp1
 
         private void buttonInsert_Click(object sender, EventArgs e)
         {
-            ReadyToUpdate[checkedListEdit.SelectedIndex] = true;
+            ReadyToUpdate[checkedListEdit12.SelectedIndex] = true;
             for (int i = 0; i < 10; i++)
             {
-                if (Changes[checkedListEdit.SelectedIndex, i] == false)
+                if (Changes[checkedListEdit12.SelectedIndex, i] == false)
                 {
-                    ReadyToUpdate[checkedListEdit.SelectedIndex] = false;
+                    ReadyToUpdate[checkedListEdit12.SelectedIndex] = false;
                 }
             }
-            if (ReadyToUpdate[checkedListEdit.SelectedIndex])
+            if (ReadyToUpdate[checkedListEdit12.SelectedIndex])
             {
-                Modified[checkedListEdit.SelectedIndex] = true;
+                Modified[checkedListEdit12.SelectedIndex] = true;
                 MessageBox.Show("Данные готовы для обновления", "Проверка", MessageBoxButtons.OK);
             }
             else
@@ -471,30 +484,30 @@ namespace WindowsFormsApp1
         {
             bool[] colormod_checked = new bool[10];
             bool[] colormod_newchecked = new bool[10];
-            labelwithtitleID.Text = checkedListEdit.SelectedItem.ToString();
-            foreach (int index in checkedListEdit.CheckedIndices) 
+            labelwithtitleID.Text = checkedListEdit12.SelectedItem.ToString();
+            foreach (int index in checkedListEdit12.CheckedIndices) 
             {
-                if (index == checkedListEdit.SelectedIndex)
+                if (index == checkedListEdit12.SelectedIndex)
                 {
-                    Modified[checkedListEdit.SelectedIndex] = true;
+                    Modified[checkedListEdit12.SelectedIndex] = true;
                 }
             }
 
             for (int i = 0; i < 10; i++)
             {
-                colormod_checked[i] = Changes[checkedListEdit.SelectedIndex, i];
-                colormod_newchecked[i] = NewChanges[checkedListEdit.SelectedIndex, i];
+                colormod_checked[i] = Changes[checkedListEdit12.SelectedIndex, i];
+                colormod_newchecked[i] = NewChanges[checkedListEdit12.SelectedIndex, i];
 
             }
-            ChangeColorMod(colormod_checked, colormod_newchecked, Modified[checkedListEdit.SelectedIndex]);
-            if (Modified[checkedListEdit.SelectedIndex])
+            ChangeColorMod(colormod_checked, colormod_newchecked, Modified[checkedListEdit12.SelectedIndex]);
+            if (Modified[checkedListEdit12.SelectedIndex])
             {
-                InsertValue(NewPerson[checkedListEdit.SelectedIndex]);
+                InsertValue(NewPerson[checkedListEdit12.SelectedIndex]);
 
             }
             else
             {
-                InsertValue(ListModifyPerson[checkedListEdit.SelectedIndex]);
+                InsertValue(ListModifyPerson[checkedListEdit12.SelectedIndex]);
 
             }
         }
@@ -528,9 +541,13 @@ namespace WindowsFormsApp1
                     try { 
                         command.ExecuteNonQuery();
                         transaction.Commit();
-                        
-                    }
-                    catch (Exception exp)
+                            ListModifyPerson[i] = NewPerson[i];
+                            for (int j = 0; j < 10; j++)
+                            {
+                                NewChanges[i, j] = false;
+                            }
+                        }
+                        catch (Exception exp)
                     {
                         AllOk = false;
                         textErr += "\n Номер дела:" + NewPerson[i].GetPersonalID() + " - "+exp.Message;
@@ -547,6 +564,121 @@ namespace WindowsFormsApp1
                 else
                 {
                     MessageBox.Show("Не все транзакции прошли успешно. Ошибки: " + textErr, "Ошибка", MessageBoxButtons.OK);
+                }
+                if (checkedListEdit12.Items != null)
+                {                    
+                        //если остался хотя бы один элемент
+                }
+                else
+                {
+                    MessageBox.Show("Документов не осталось.", "Переход", MessageBoxButtons.OK);
+                    buttonClearAll.PerformClick(); //очищаем просто
+                    textBoxID.Text = "Перейдите в окно создания";
+                    buttonExit.PerformClick();
+                }
+            }
+            else { return; }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            PersonalFiles form = new PersonalFiles(connection);
+            this.Close();
+            form.Show();
+        }
+
+        private void buttonClearAll_Click(object sender, EventArgs e)
+        {
+            Person empty = new Person();
+            InsertValue(empty);
+            int index = checkedListEdit12.SelectedIndex;
+            textBoxID.Text = ListModifyPerson[index].GetPersonalID().ToString();
+            for (int j = 0; j < 10; j++)
+            {
+                Changes[index, j] = false;
+            }
+
+        }
+
+        private void buttonUpdateGroupOnly_Click(object sender, EventArgs e)
+        {
+            string textErr = "";
+            bool AllOk = true;
+            string TextBigCommand = "";
+            DialogResult result = MessageBox.Show("Вы уверены что хотите обновить данные" +
+                "\nСтарые данные будут утеряны?",
+                   "Проверка",
+                   MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                SqlTransaction transaction = connection.BeginTransaction();
+                for (int i = 0; i < Modified.Length; i++)
+                {
+                    if (Modified[i])
+                    {
+
+                        bool[] NC = new bool[10];
+                        for (int j = 0; j < 10; j++)
+                        {
+                            NC[j] = NewChanges[i, j];
+                        }
+
+                        //SqlTransaction transaction = connection.BeginTransaction();
+                        SqlCommand command = NewPerson[i].MkUpdate(NC);
+                        TextBigCommand += command.CommandText.ToString() + " ";
+                    }
+                }
+                try
+                {
+                    SqlCommand BigCommand = new SqlCommand(TextBigCommand);
+                    BigCommand.Connection = connection;
+                    BigCommand.Transaction = transaction;
+                    BigCommand.ExecuteNonQuery();
+                    transaction.Commit();
+
+                    for (int i = 0; i < Modified.Length; i++)
+                    {
+                        if (Modified[i])
+                        {
+                            ListModifyPerson[i] = NewPerson[i];
+                            for (int j = 0; j < 10; j++)
+                            {
+                                NewChanges[i, j] = false;
+                            }
+
+                        }
+                    }
+                }
+                catch (Exception exp)
+                {
+                    AllOk = false;
+                    textErr = exp.Message;
+                    transaction.Rollback();
+                }
+
+                    
+                
+                if (AllOk)
+                {
+                    MessageBox.Show("Все транзакции прошли успешно. Данные обновленны", "Успех", MessageBoxButtons.OK);
+
+                }
+                else
+                {
+                    MessageBox.Show("Не все транзакции прошли успешно. Транзакция полностью отменена. " +
+                        "\nРекомендуется вызвать изменения последовательно. Так вы узнаете в каком месте произошла ошибка" +
+                        "\nОшибки: " + textErr, "Ошибка", MessageBoxButtons.OK);
+                }
+                if (checkedListEdit12.Items != null)
+                {
+                    //если остался хотя бы один элемент
+                }
+                else
+                {
+                    MessageBox.Show("Документов не осталось.", "Переход", MessageBoxButtons.OK);
+                    buttonClearAll.PerformClick(); //очищаем просто
+                    textBoxID.Text = "Перейдите в окно создания";
+                    buttonExit.PerformClick();
                 }
             }
             else { return; }

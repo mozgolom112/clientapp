@@ -58,9 +58,9 @@
             this.buttonSaveChanges = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.labelwithtitleID = new System.Windows.Forms.Label();
-            this.checkedListEdit = new System.Windows.Forms.CheckedListBox();
+            this.checkedListEdit12 = new System.Windows.Forms.CheckedListBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.buttonExit = new System.Windows.Forms.Button();
             this.buttonUpdateWhoCan = new System.Windows.Forms.Button();
             this.buttonUpdateGroupOnly = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
@@ -78,6 +78,7 @@
             this.buttonClearAll.TabIndex = 23;
             this.buttonClearAll.Text = "Очистить";
             this.buttonClearAll.UseVisualStyleBackColor = true;
+            this.buttonClearAll.Click += new System.EventHandler(this.buttonClearAll_Click);
             // 
             // checkBox1
             // 
@@ -377,21 +378,21 @@
             this.labelwithtitleID.TabIndex = 24;
             this.labelwithtitleID.Text = "ID";
             // 
-            // checkedListEdit
+            // checkedListEdit12
             // 
-            this.checkedListEdit.FormattingEnabled = true;
-            this.checkedListEdit.Location = new System.Drawing.Point(6, 38);
-            this.checkedListEdit.Name = "checkedListEdit";
-            this.checkedListEdit.Size = new System.Drawing.Size(210, 293);
-            this.checkedListEdit.TabIndex = 25;
-            this.checkedListEdit.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            this.checkedListEdit12.FormattingEnabled = true;
+            this.checkedListEdit12.Location = new System.Drawing.Point(6, 38);
+            this.checkedListEdit12.Name = "checkedListEdit12";
+            this.checkedListEdit12.Size = new System.Drawing.Size(210, 293);
+            this.checkedListEdit12.TabIndex = 25;
+            this.checkedListEdit12.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.button3);
+            this.groupBox5.Controls.Add(this.buttonExit);
             this.groupBox5.Controls.Add(this.buttonUpdateWhoCan);
             this.groupBox5.Controls.Add(this.buttonUpdateGroupOnly);
-            this.groupBox5.Controls.Add(this.checkedListEdit);
+            this.groupBox5.Controls.Add(this.checkedListEdit12);
             this.groupBox5.Location = new System.Drawing.Point(12, 12);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(222, 556);
@@ -400,14 +401,15 @@
             this.groupBox5.Text = "Список редактирования";
             this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
             // 
-            // button3
+            // buttonExit
             // 
-            this.button3.Location = new System.Drawing.Point(54, 515);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(96, 26);
-            this.button3.TabIndex = 28;
-            this.button3.Text = "Выход";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonExit.Location = new System.Drawing.Point(54, 515);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(96, 26);
+            this.buttonExit.TabIndex = 28;
+            this.buttonExit.Text = "Выход";
+            this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.button3_Click);
             // 
             // buttonUpdateWhoCan
             // 
@@ -427,6 +429,7 @@
             this.buttonUpdateGroupOnly.TabIndex = 26;
             this.buttonUpdateGroupOnly.Text = "Применить изменения (Только группу целиком)";
             this.buttonUpdateGroupOnly.UseVisualStyleBackColor = true;
+            this.buttonUpdateGroupOnly.Click += new System.EventHandler(this.buttonUpdateGroupOnly_Click);
             // 
             // EditPersonForm
             // 
@@ -483,9 +486,9 @@
         private System.Windows.Forms.Button buttonSaveChanges;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label labelwithtitleID;
-        private System.Windows.Forms.CheckedListBox checkedListEdit;
+        private System.Windows.Forms.CheckedListBox checkedListEdit12;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Button buttonUpdateWhoCan;
         private System.Windows.Forms.Button buttonUpdateGroupOnly;
     }

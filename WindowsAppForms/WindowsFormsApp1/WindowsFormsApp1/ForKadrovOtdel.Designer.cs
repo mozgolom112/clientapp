@@ -38,7 +38,6 @@
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonExit = new System.Windows.Forms.Button();
-            this.buttonKomandirovki = new System.Windows.Forms.Button();
             this.buttonPersonFile = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.militaryCompanyDataSet1 = new WindowsFormsApp1.MilitaryCompanyDataSet();
@@ -116,7 +115,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.buttonExit);
-            this.groupBox1.Controls.Add(this.buttonKomandirovki);
             this.groupBox1.Controls.Add(this.buttonPersonFile);
             this.groupBox1.Location = new System.Drawing.Point(45, 29);
             this.groupBox1.Name = "groupBox1";
@@ -134,18 +132,9 @@
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
-            // buttonKomandirovki
-            // 
-            this.buttonKomandirovki.Location = new System.Drawing.Point(55, 165);
-            this.buttonKomandirovki.Name = "buttonKomandirovki";
-            this.buttonKomandirovki.Size = new System.Drawing.Size(178, 31);
-            this.buttonKomandirovki.TabIndex = 1;
-            this.buttonKomandirovki.Text = "Командировки";
-            this.buttonKomandirovki.UseVisualStyleBackColor = true;
-            // 
             // buttonPersonFile
             // 
-            this.buttonPersonFile.Location = new System.Drawing.Point(55, 97);
+            this.buttonPersonFile.Location = new System.Drawing.Point(55, 128);
             this.buttonPersonFile.Name = "buttonPersonFile";
             this.buttonPersonFile.Size = new System.Drawing.Size(178, 31);
             this.buttonPersonFile.TabIndex = 0;
@@ -186,7 +175,6 @@
         private System.Windows.Forms.Button buttonAddTask;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonExit;
-        private System.Windows.Forms.Button buttonKomandirovki;
         private System.Windows.Forms.Button buttonPersonFile;
         private System.Windows.Forms.ToolTip toolTip1;
         private MilitaryCompanyDataSet militaryCompanyDataSet1;

@@ -68,9 +68,12 @@ namespace WindowsFormsApp1
 
         private void buttonPersonFile_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.WindowState = FormWindowState.Minimized;
             PersonalFiles personalFiles = new PersonalFiles(connection);
+            
             personalFiles.Show();
+
+            personalFiles.WindowState = FormWindowState.Normal;
         }
     }
 }
