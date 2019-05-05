@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
         {
             if (DBName.SelectedIndex >= 0)
             {
-                SqlConnection testconn = TestConn.TestNewConn(@NameOfServer.SelectedItem.ToString(), DBName.SelectedItem.ToString());
+                SqlConnection testconn = DBSQLServerUtils.GetTestDBConnection(@NameOfServer.SelectedItem.ToString(), DBName.SelectedItem.ToString());
                 try
                 {
                     testconn.Open();
@@ -100,7 +100,7 @@ namespace WindowsFormsApp1
         {
                if (NameOfServer.SelectedIndex >= 0)
                 {
-                    SqlConnection testconn = TestConn.TestNewConn(@NameOfServer.SelectedItem.ToString(), DBName.SelectedItem.ToString());
+                    SqlConnection testconn = DBSQLServerUtils.GetTestDBConnection(@NameOfServer.SelectedItem.ToString(), DBName.SelectedItem.ToString());
                     try
                     {
                     testconn.Open();

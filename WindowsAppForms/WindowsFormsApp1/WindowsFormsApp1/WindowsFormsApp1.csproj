@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBSQLServerUtils.cs" />
-    <Compile Include="DBUtils.cs" />
     <Compile Include="EditPersonForm.cs">
       <SubType>Form</SubType>
     </Compile>
