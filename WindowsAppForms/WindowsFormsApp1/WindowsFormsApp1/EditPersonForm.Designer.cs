@@ -201,7 +201,6 @@
             this.textBoxID.Size = new System.Drawing.Size(191, 22);
             this.textBoxID.TabIndex = 14;
             this.textBoxID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxID.TextChanged += new System.EventHandler(this.textBoxID_TextChanged);
             // 
             // labelStatus
             // 
@@ -399,7 +398,6 @@
             this.groupBox5.TabIndex = 26;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Список редактирования";
-            this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
             // 
             // buttonExit
             // 
@@ -440,7 +438,6 @@
             this.Controls.Add(this.groupBox4);
             this.Name = "EditPersonForm";
             this.Text = "Редактирование";
-            this.Load += new System.EventHandler(this.EditPersonForm_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);

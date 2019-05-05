@@ -113,7 +113,6 @@ namespace WindowsFormsApp1
                         {
                             case 5: { add += " Specialize = " + GetSpecKey().ToString(); break; }
                             case 6: { add += " Position = '" + GetPosition().ToString() + "' "; break; }
-                           // case 7: { break; }
                             case 8: { add += " Salary = " + GetSalary(); break; }
                         }
                         addseparator = true;

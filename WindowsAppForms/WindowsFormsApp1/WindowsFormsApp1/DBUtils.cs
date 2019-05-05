@@ -11,9 +11,6 @@ namespace WindowsFormsApp1
     {
         public static SqlConnection GetDBConnection()
         {
-
-            string dse = "HOME-PC";
-
             string datasource = "HOME-PC";
             string database = "MilitaryCompany";
             string username = "SuperClient";

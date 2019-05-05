@@ -127,24 +127,7 @@ namespace WindowsFormsApp1
             labelSalary.BackColor = Color.Aqua;
 
             checkBox1.Checked = false;
-            //labelAftograf.BackColor = Color.Aqua;
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MakePersonForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
+        }      
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -167,16 +150,9 @@ namespace WindowsFormsApp1
                     SqlCommand command = NewPerson.MkInsert();
                     command.Connection = connection;
                     command.Transaction = transaction;
-                    
-                    //SqlCommand command = NewPerson.MkInsert();
-                    //command.connection.CreateCommand();
-                    //command.Connection.CreateCommand();
-                    //command.Transaction = transaction;
                     try
                     {
-                        //SqlCommand command = NewPerson.MkInsert();
                         command.ExecuteNonQuery();
-
                         transaction.Commit();
 
                         DialogResult resultfinish = MessageBox.Show("Данные успешно вставленны.\nХотите создать еще?", "Успех", MessageBoxButtons.YesNo);
@@ -421,5 +397,6 @@ namespace WindowsFormsApp1
             Person empty = new Person();
             InsertValue(empty);
         }
+
     }
 }

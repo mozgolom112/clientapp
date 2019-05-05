@@ -78,9 +78,6 @@ namespace WindowsFormsApp1
             }
             dataReader.Close();
 
-
-
-
             for (int i = 0; i < ListForEdit.Count; i++)
             {
                 checkedListEdit12.Items.Add(ListForEdit[i].SubItems[0].Text + " "
@@ -93,10 +90,7 @@ namespace WindowsFormsApp1
             comboSpec.Items.AddRange(CollectionOfSpec.ToArray());
             comboStatus.Items.AddRange(CollectionOfStatus.ToArray());
 
-
             checkedListEdit12.SelectedIndex = 0;
-
-
 
         }
 
@@ -117,7 +111,6 @@ namespace WindowsFormsApp1
             if (Modify[6] && ModOn && NC[6]) { labelPosition.BackColor = Color.Yellow; } else { labelPosition.BackColor = Color.Green; }
             if (Modify[7] && ModOn && NC[7]) { labelStatus.BackColor = Color.Yellow; } else { labelStatus.BackColor = Color.Green; }
             if (Modify[8] && ModOn && NC[8]) { labelSalary.BackColor = Color.Yellow; } else { labelSalary.BackColor = Color.Green; }
-            // if (Modify[0]) { } else { }
 
         }
 
@@ -127,30 +120,23 @@ namespace WindowsFormsApp1
             textBoxSurname.Text = person.GetSurname();
             textBoxSurname.TextChanged += textBoxSurname_TextChanged;
 
-            //labelSurname.BackColor = Color.Green;
 
             textBoxName.TextChanged -= textBoxName_TextChanged;
             textBoxName.Text = person.GetFirstname();
             textBoxName.TextChanged += textBoxName_TextChanged;
-            //labelName.BackColor = Color.Green;
 
             textBoxSecondname.TextChanged -= textBoxSecondname_TextChanged;
             textBoxSecondname.Text = person.GetSecondname();
             textBoxSecondname.TextChanged += textBoxSecondname_TextChanged;
 
-            //labelSecondName.BackColor = Color.Green;
 
             textBoxYoB.TextChanged -= textBoxYoB_TextChanged;
             textBoxYoB.Text = person.GetYear().ToString();
             textBoxYoB.TextChanged += textBoxYoB_TextChanged;
+            
 
-            //labelYoB.BackColor = Color.Green;
-
-            textBoxID.TextChanged -= textBoxID_TextChanged;
             textBoxID.Text = person.GetPersonalID().ToString();
-            textBoxID.TextChanged += textBoxID_TextChanged;
 
-            //labelPersonalID.BackColor = Color.Green;
 
             comboSpec.SelectedIndexChanged-= comboSpec_SelectedIndexChanged;
             if (person.GetSpecKey() >= 6) { comboSpec.SelectedIndex = person.GetSpecKey() - 2; }
@@ -165,40 +151,25 @@ namespace WindowsFormsApp1
 
             comboSpec.SelectedIndexChanged += comboSpec_SelectedIndexChanged;
 
-            //labelSpecialize.BackColor = Color.Green;
 
             textBoxPosition.TextChanged -= textBoxPosition_TextChanged;
             textBoxPosition.Text = person.GetPosition();
             textBoxPosition.TextChanged += textBoxPosition_TextChanged;
 
-            //labelPosition.BackColor = Color.Green;
 
             comboStatus.SelectedIndexChanged -= comboStatus_SelectedIndexChanged;
             comboStatus.SelectedIndex = person.GetStatusKey() - 1;
             comboStatus.SelectedIndexChanged += comboStatus_SelectedIndexChanged;
 
-            //labelStatus.BackColor = Color.Green;
 
             textBoxSalary.TextChanged -= textBoxSalary_TextChanged;
             textBoxSalary.Text = person.GetSalary().ToString();
             textBoxSalary.TextChanged += textBoxSalary_TextChanged;
 
-            //labelSalary.BackColor = Color.Green;
 
             checkBox1.Checked = false;
-            //labelAftograf.BackColor = Color.Green;
-
         }
-
-        private void EditPersonForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox5_Enter(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -211,7 +182,6 @@ namespace WindowsFormsApp1
             {
                 checkBox1.Text = "Не согласен";
                 Changes[checkedListEdit12.SelectedIndex, 9] = false;
-                //Modified[checkedListEdit.SelectedIndex] = false;
             }
         }
 
@@ -296,39 +266,6 @@ namespace WindowsFormsApp1
                 NewChanges[checkedListEdit12.SelectedIndex, 3] = true;
                 Modified[checkedListEdit12.SelectedIndex] = false;
             }
-        }
-
-        private void textBoxID_TextChanged(object sender, EventArgs e)
-        {
-            /*
-            SqlCommand sql = new SqlCommand("select ID from personal_file where ID = " + textBoxID.Text,
-                                    connection);
-            SqlDataReader reader = sql.ExecuteReader();
-            if (reader.HasRows)
-            {
-                MessageBox.Show("Ошибка! Не может быть два одинаковых ID.\nИзмените на уникальный",
-                    "Ошибка",
-                    MessageBoxButtons.OK);
-                labelPersonalID.BackColor = Color.Red;
-                Changes[checkedListEdit.SelectedIndex, 4] = false;
-            }
-            else
-            {
-                try
-                {
-                    NewPerson[checkedListEdit.SelectedIndex].SetPersonalID(Int32.Parse(textBoxID.Text));
-                    labelPersonalID.BackColor = Color.Yellow;
-                    Changes[checkedListEdit.SelectedIndex, 4] = true;
-                }
-                catch (Exception exp)
-                {
-                    MessageBox.Show(exp.Message, "Ошибка ввода", MessageBoxButtons.OK);
-                    labelPersonalID.BackColor = Color.Red;
-                    Changes[checkedListEdit.SelectedIndex, 2] = false;
-                }
-            }
-            reader.Close();
-            */
         }
 
         private void comboSpec_SelectedIndexChanged(object sender, EventArgs e)
@@ -454,7 +391,6 @@ namespace WindowsFormsApp1
             else
             {
                 MessageBox.Show("Данные не заполненны или имеют ошибки", "Проверка", MessageBoxButtons.OK);
-
             }
         }
 
@@ -622,8 +558,6 @@ namespace WindowsFormsApp1
                         {
                             NC[j] = NewChanges[i, j];
                         }
-
-                        //SqlTransaction transaction = connection.BeginTransaction();
                         SqlCommand command = NewPerson[i].MkUpdate(NC);
                         TextBigCommand += command.CommandText.ToString() + " ";
                     }
@@ -683,5 +617,7 @@ namespace WindowsFormsApp1
             }
             else { return; }
         }
+
+
     }
 }

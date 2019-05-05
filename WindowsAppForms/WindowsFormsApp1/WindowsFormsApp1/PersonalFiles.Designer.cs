@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.militaryCompanyDataSet = new WindowsFormsApp1.MilitaryCompanyDataSet();
             this.personalfileBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.personal_fileTableAdapter = new WindowsFormsApp1.MilitaryCompanyDataSetTableAdapters.personal_fileTableAdapter();
             this.buttonMkNewPerson = new System.Windows.Forms.Button();
             this.buttonChangePersons = new System.Windows.Forms.Button();
             this.buttonDeletePersons = new System.Windows.Forms.Button();
@@ -64,26 +62,11 @@
             this.buttonCheckedAll = new System.Windows.Forms.Button();
             this.buttonCleanCheck = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.militaryCompanyDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personalfileBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // militaryCompanyDataSet
-            // 
-            this.militaryCompanyDataSet.DataSetName = "MilitaryCompanyDataSet";
-            this.militaryCompanyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // personalfileBindingSource
-            // 
-            this.personalfileBindingSource.DataMember = "personal_file";
-            this.personalfileBindingSource.DataSource = this.militaryCompanyDataSet;
-            // 
-            // personal_fileTableAdapter
-            // 
-            this.personal_fileTableAdapter.ClearBeforeFill = true;
             // 
             // buttonMkNewPerson
             // 
@@ -163,7 +146,6 @@
             this.label1.Size = new System.Drawing.Size(26, 17);
             this.label1.TabIndex = 10;
             this.label1.Text = "От";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -180,7 +162,6 @@
             this.textBoxParaSelectFrom.Name = "textBoxParaSelectFrom";
             this.textBoxParaSelectFrom.Size = new System.Drawing.Size(100, 22);
             this.textBoxParaSelectFrom.TabIndex = 12;
-            this.textBoxParaSelectFrom.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBoxParaSelectTo
             // 
@@ -231,7 +212,6 @@
             this.cmbBoxStringOfSearch.Name = "cmbBoxStringOfSearch";
             this.cmbBoxStringOfSearch.Size = new System.Drawing.Size(375, 24);
             this.cmbBoxStringOfSearch.TabIndex = 17;
-            this.cmbBoxStringOfSearch.SelectedIndexChanged += new System.EventHandler(this.cmbBoxStringOfSearch_SelectedIndexChanged);
             // 
             // ID
             // 
@@ -296,7 +276,6 @@
             this.listViewPerson.TabIndex = 0;
             this.listViewPerson.UseCompatibleStateImageBehavior = false;
             this.listViewPerson.View = System.Windows.Forms.View.Details;
-            this.listViewPerson.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // checkBoxLoadFromHard
             // 
@@ -307,7 +286,6 @@
             this.checkBoxLoadFromHard.TabIndex = 18;
             this.checkBoxLoadFromHard.Text = "Локальная выгрузка";
             this.checkBoxLoadFromHard.UseVisualStyleBackColor = true;
-            this.checkBoxLoadFromHard.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // labelLastLoadTime
             // 
@@ -317,7 +295,6 @@
             this.labelLastLoadTime.Size = new System.Drawing.Size(125, 17);
             this.labelLastLoadTime.TabIndex = 19;
             this.labelLastLoadTime.Text = "Дата обновления";
-            this.labelLastLoadTime.Click += new System.EventHandler(this.label3_Click);
             // 
             // label3
             // 
@@ -327,7 +304,6 @@
             this.label3.Size = new System.Drawing.Size(85, 17);
             this.label3.TabIndex = 20;
             this.label3.Text = "LastUpdate:";
-            this.label3.Click += new System.EventHandler(this.label3_Click_1);
             // 
             // buttonCancelSelect
             // 
@@ -390,8 +366,6 @@
             this.Controls.Add(this.listViewPerson);
             this.Name = "PersonalFiles";
             this.Text = "Личные дела";
-            this.Load += new System.EventHandler(this.PersonalFiles_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.militaryCompanyDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.personalfileBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -403,9 +377,7 @@
         }
 
         #endregion
-        private MilitaryCompanyDataSet militaryCompanyDataSet;
         private System.Windows.Forms.BindingSource personalfileBindingSource;
-        private MilitaryCompanyDataSetTableAdapters.personal_fileTableAdapter personal_fileTableAdapter;
         private System.Windows.Forms.Button buttonMkNewPerson;
         private System.Windows.Forms.Button buttonChangePersons;
         private System.Windows.Forms.Button buttonDeletePersons;

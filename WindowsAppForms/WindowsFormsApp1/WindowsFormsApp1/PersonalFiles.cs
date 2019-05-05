@@ -113,28 +113,6 @@ namespace WindowsFormsApp1
 
         }
 
-        private void PersonalFiles_Load(object sender, EventArgs e)
-        {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "militaryCompanyDataSet.personal_file". При необходимости она может быть перемещена или удалена.
-            this.personal_fileTableAdapter.Fill(this.militaryCompanyDataSet.personal_file);
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void cmboBoxSettingsOfSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -195,6 +173,7 @@ namespace WindowsFormsApp1
                         TypeOfSearch = "*";
 
                         cmbBoxStringOfSearch.Enabled = false;
+                        cmbBoxStringOfSearch.Text = "";
                         break;
                     }
                 default:
@@ -207,10 +186,6 @@ namespace WindowsFormsApp1
             cmbBoxStringOfSearch.Focus();
         }
 
-        private void cmbBoxStringOfSearch_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
@@ -259,6 +234,15 @@ namespace WindowsFormsApp1
             catch (Exception exp)
             {
                     MessageBox.Show("Ошибка чтения. Обратитесь в службу поддержки\nОшибка: " + exp.Message, "Ошибка", MessageBoxButtons.OK);
+                    try
+                    {
+                        SqlCommand rmTable = new SqlCommand("drop table #result_of_search", connection);
+                        rmTable.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+                        //уже удалена или не была создана временная таблица
+                    }
                     return;
             }
 
@@ -339,7 +323,7 @@ namespace WindowsFormsApp1
                 }
             }
 
-            }
+            }            
         }
 
         private void buttonDeletePersons_Click(object sender, EventArgs e)
@@ -417,21 +401,6 @@ namespace WindowsFormsApp1
         private void buttonUpdateTable_Click(object sender, EventArgs e)
         {
             CheckOutFromDB(connection);
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click_1(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonSelect_Click(object sender, EventArgs e)

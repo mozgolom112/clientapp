@@ -80,7 +80,6 @@
             this.label1.Size = new System.Drawing.Size(236, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Анкета нового сотрудника";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // labelSurname
             // 
@@ -357,7 +356,6 @@
             this.Controls.Add(this.buttonInsert);
             this.Name = "MakePersonForm";
             this.Text = "Добавление сотрудника";
-            this.Load += new System.EventHandler(this.MakePersonForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

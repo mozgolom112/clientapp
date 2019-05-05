@@ -11,8 +11,7 @@ namespace WindowsFormsApp1
     {
         public static SqlConnection TestNewConn(string datasource, string database)
         {
-            string connString = @"Data Source=" + datasource + ";Initial Catalog=" + database + ";Persist Security Info=false;User ID=Tester; Password=123;";      //добавь потом роль для вывода информцаии     
-            //string connString = @"Data Source=" + datasource + ";Initial Catalog=" + database + ";Persist Security Info=True;";
+            string connString = @"Data Source=" + datasource + ";Initial Catalog=" + database + ";Persist Security Info=false;User ID=Tester; Password=123;";      
             SqlConnection conn = new SqlConnection(connString);
             return conn;
         }

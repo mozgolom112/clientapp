@@ -85,7 +85,6 @@
             this.label2.Size = new System.Drawing.Size(161, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "Введите новую задачу:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtBoxNewTask
             // 

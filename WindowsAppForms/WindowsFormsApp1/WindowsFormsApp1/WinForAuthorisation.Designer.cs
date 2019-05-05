@@ -62,7 +62,6 @@ namespace WindowsFormsApp1
             this.label1.Size = new System.Drawing.Size(97, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Имя сервера:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -72,7 +71,6 @@ namespace WindowsFormsApp1
             this.label2.Size = new System.Drawing.Size(135, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Имя пользователя:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -91,7 +89,6 @@ namespace WindowsFormsApp1
             this.label4.Size = new System.Drawing.Size(96, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "База данных:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // splitContainer1
             // 
@@ -106,7 +103,6 @@ namespace WindowsFormsApp1
             this.splitContainer1.Panel1.Controls.Add(this.label3);
             this.splitContainer1.Panel1.Controls.Add(this.label4);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
-            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
@@ -121,7 +117,6 @@ namespace WindowsFormsApp1
             this.splitContainer1.Panel2.Controls.Add(this.labelStatusOfConnection);
             this.splitContainer1.Panel2.Controls.Add(this.Password);
             this.splitContainer1.Panel2.Controls.Add(this.label5);
-            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(695, 391);
             this.splitContainer1.SplitterDistance = 254;
             this.splitContainer1.TabIndex = 5;
@@ -143,7 +138,6 @@ namespace WindowsFormsApp1
             this.label6.Size = new System.Drawing.Size(99, 17);
             this.label6.TabIndex = 4;
             this.label6.Text = "Подключение";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // buttonStatusAuth
             // 
@@ -239,7 +233,6 @@ namespace WindowsFormsApp1
             this.label5.Size = new System.Drawing.Size(121, 17);
             this.label5.TabIndex = 10;
             this.label5.Text = "Показать пароль";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // ButtonForConn
             // 
@@ -259,7 +252,6 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.splitContainer1);
             this.Name = "WinForAuthorisation";
             this.Text = "Соединение с сервером";
-            this.Load += new System.EventHandler(this.WinForAuthorisation_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);

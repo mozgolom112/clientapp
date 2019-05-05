@@ -9,8 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-
 namespace WindowsFormsApp1
 {
 
@@ -21,65 +19,9 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void WinForAuthorisation_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-        }
-
-
-
-
-
-        //ComboBox for Server Name
-
-        
-
-
+          
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Console.WriteLine(NameOfServer.SelectedItem.ToString());
-            //Console.WriteLine(NameOfServer.Items[NameOfServer.SelectedIndex].ToString());
             if (DBName.SelectedIndex >= 0)
             {
                 SqlConnection testconn = TestConn.TestNewConn(@NameOfServer.SelectedItem.ToString(), DBName.SelectedItem.ToString());
@@ -93,7 +35,6 @@ namespace WindowsFormsApp1
                 {
                     labelStatusOfConnection.Text = "Сервер не доступен. Нажмите на Инфо, чтобы узнать об ошибке";
                     connIsReady = false;
-                    //ErrMessage = ex.Message;
                 }
                 connectiontest = testconn;
             }
@@ -171,7 +112,6 @@ namespace WindowsFormsApp1
                     {
                     labelStatusOfConnection.Text = "Сервер не доступен. Нажмите на Инфо, чтобы узнать об ошибке";
                     connIsReady = false;
-                    //ErrMessage = ex.Message;
 
                 }
                 connectiontest = testconn;
@@ -196,16 +136,6 @@ namespace WindowsFormsApp1
             try { connectiontest.Open(); connIsReady = true; } catch (Exception exc) { connIsReady = false; }
                 ErrandInfoMessage.MakeMessage(connectiontest, connIsReady, false);
             try { connectionforuser.Open(); connIsReady = true; } catch (Exception exc) { connIsReady = false; }
-        }
-
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-           // ErrandInfoMessage.MakeMessage(connection, connIsReady, loginIsMade);
         }
 
         private void button2_Click(object sender, EventArgs e)
