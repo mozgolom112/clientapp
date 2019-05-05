@@ -14,7 +14,6 @@ namespace WindowsFormsApp1
 
     public partial class WinForAuthorisation : Form
     {
-
         public WinForAuthorisation()
         {
             InitializeComponent();

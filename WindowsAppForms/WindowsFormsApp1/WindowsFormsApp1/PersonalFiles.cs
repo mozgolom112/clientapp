@@ -20,14 +20,10 @@ namespace WindowsFormsApp1
 
         private ArrayList CollectionOfStatus;
         private ArrayList CollectionOfSpec;
-
         private DataSet DataCurrentSet;
-
         DateTime LastUpdate;
-        
         string TypeOfSearch;
         string ValueOfSearch;
-
         string TypeOfSelect;
 
         private void CheckOutFromDB(SqlConnection conn)

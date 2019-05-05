@@ -17,11 +17,8 @@ namespace WindowsFormsApp1
         private string Surname;
         private string Firstname;
         private string Secondname;
-
         private int year;
-
         private int Spec_key;
-
         private string Position;
         private int Salary;
         private int status_key;
